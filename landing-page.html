@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingredy Frois - Psicóloga Clínica | Especialista em Transtornos de Humor</title>
+  <meta name="description" content="Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão. Atendimento online com TCC e DBT. Agende sua sessão.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/">
+  <meta property="og:title" content="Ingredy Frois - Psicóloga Clínica | Especialista em Transtornos de Humor">
+  <meta property="og:description" content="Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão. Atendimento online com TCC e DBT.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #5B7B6F;
+      --primary-dark: #4A6A5E;
+      --primary-light: #7A9B8F;
+      --accent: #C8A96E;
+      --accent-dark: #B0924F;
+      --bg: #F5F0E8;
+      --bg-alt: #EDE8DD;
+      --white: #FAFAF5;
+      --dark: #2D3436;
+      --text: #4A4A4A;
+      --text-light: #6B6B6B;
+      --shadow: 0 2px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3, h4 { color: var(--dark); line-height: 1.3; }
+
+    /* FOCUS VISIBLE */
+    *:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .btn:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 3px; }
+    .nav__link:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 4px; }
+
+    /* NAV */
+    .header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(250,250,245,0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 1px 10px rgba(0,0,0,0.05); transition: var(--transition);
+    }
+    .header.scrolled { box-shadow: var(--shadow); }
+    .nav {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 72px;
+    }
+    .nav__logo { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+    .nav__logo span { color: var(--accent); }
+    .nav__links { display: flex; gap: 1.8rem; align-items: center; }
+    .nav__link {
+      font-size: 0.9rem; font-weight: 500; color: var(--text);
+      position: relative; padding: 0.25rem 0;
+    }
+    .nav__link::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0;
+      height: 2px; background: var(--primary); transition: var(--transition);
+    }
+    .nav__link:hover::after { width: 100%; }
+    .nav__link:hover { color: var(--primary); }
+    .nav__cta {
+      background: var(--primary); color: var(--white) !important;
+      padding: 0.55rem 1.4rem; border-radius: 50px; font-weight: 600; font-size: 0.85rem;
+    }
+    .nav__cta::after { display: none; }
+    .nav__cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .nav__toggle {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001;
+      background: none; border: none; -webkit-appearance: none; appearance: none;
+    }
+    .nav__toggle span { width: 25px; height: 2.5px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+    .nav__toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav__toggle.active span:nth-child(2) { opacity: 0; }
+    .nav__toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .nav__overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 999;
+    }
+    .nav__overlay.active { display: block; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; border-radius: 50px; font-weight: 600;
+      font-size: 0.95rem; cursor: pointer; border: none;
+      transition: var(--transition); font-family: inherit;
+    }
+    .btn--primary { background: var(--primary); color: var(--white); }
+    .btn--primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(91,123,111,0.3); }
+    .btn--outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn--outline:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+    .btn--whatsapp { background: #0A7C5F; color: #fff; }
+    .btn--whatsapp:hover { background: #086B50; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(10,124,95,0.3); }
+    .btn--accent { background: var(--accent); color: #111; }
+    .btn--accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn--full { width: 100%; justify-content: center; }
+
+    /* SECTIONS */
+    .section { padding: 100px 2rem; }
+    .section--alt { background: var(--bg-alt); }
+    .section--white { background: var(--white); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .tag {
+      display: inline-block; background: rgba(91,123,111,0.1); color: var(--primary);
+      padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.5px; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 2rem 60px;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+    }
+    .hero__grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero__tag {
+      display: inline-block; background: rgba(91,123,111,0.1); color: var(--primary);
+      padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem;
+      font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .hero__title { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
+    .hero__title span { color: var(--primary); }
+    .hero__subtitle { font-size: 1.1rem; color: var(--text-light); margin-bottom: 0.5rem; font-weight: 500; }
+    .hero__desc { font-size: 1.05rem; margin-bottom: 2rem; max-width: 500px; }
+    .hero__buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero__img { display: flex; justify-content: center; }
+    .hero__img img {
+      width: 400px; height: 400px; object-fit: cover; border-radius: 50%;
+      box-shadow: var(--shadow-lg); border: 6px solid var(--white);
+    }
+
+    /* GRID 2 COLS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .grid-2 img { border-radius: var(--radius); box-shadow: var(--shadow); }
+    .grid-2 h3 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+    .grid-2 p { margin-bottom: 1rem; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .card {
+      background: var(--white); border-radius: var(--radius); padding: 2.5rem;
+      box-shadow: var(--shadow); transition: var(--transition); border: 1px solid rgba(0,0,0,0.04);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .card__icon {
+      width: 56px; height: 56px; background: rgba(91,123,111,0.1); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+      margin-bottom: 1.5rem; color: var(--primary);
+    }
+    .card__title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .card__text { color: var(--text-light); font-size: 0.95rem; }
+
+    /* APPROACH */
+    .approach {
+      background: var(--white); border-radius: var(--radius); padding: 2.5rem;
+      box-shadow: var(--shadow); border-left: 4px solid var(--primary); margin-bottom: 2rem;
+    }
+    .approach h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--primary-dark); }
+    .approach p { line-height: 1.8; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+    .step { text-align: center; padding: 2rem; }
+    .step__num {
+      width: 56px; height: 56px; background: var(--primary); color: var(--white);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 700; margin: 0 auto 1.2rem;
+    }
+    .step h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step p { color: var(--text-light); font-size: 0.9rem; }
+
+    /* QUALIFICATIONS */
+    .quals { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .qual {
+      display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem;
+      background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .qual__icon {
+      width: 42px; height: 42px; min-width: 42px; background: rgba(91,123,111,0.1);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1.1rem;
+    }
+    .qual p { font-size: 0.9rem; font-weight: 500; }
+
+    /* PRICING */
+    .pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 800px; margin: 0 auto; }
+    .price-card {
+      background: var(--white); border-radius: var(--radius); padding: 2.5rem;
+      box-shadow: var(--shadow); text-align: center; transition: var(--transition);
+      border: 2px solid transparent; position: relative;
+    }
+    .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .price-card--pop { border-color: var(--primary); }
+    .price-card--pop::before {
+      content: 'Mais escolhido'; position: absolute; top: -14px; left: 50%;
+      transform: translateX(-50%); background: var(--primary); color: var(--white);
+      padding: 0.3rem 1.2rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+    }
+    .price-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .price-card .desc { color: var(--text-light); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .price-card .price { font-size: 2.6rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+    .price-card .price small { font-size: 0.95rem; font-weight: 400; color: var(--text-light); }
+    .price-card .info { color: var(--text-light); font-size: 0.8rem; margin-bottom: 1.5rem; }
+    .price-card ul { text-align: left; margin-bottom: 1.5rem; }
+    .price-card li {
+      padding: 0.4rem 0; font-size: 0.9rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .price-card li::before { content: '\2713'; color: var(--primary); font-weight: 700; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-box {
+      padding: 2.5rem; background: var(--primary); border-radius: var(--radius); color: var(--white);
+    }
+    .contact-box h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 1rem; }
+    .contact-box > p { opacity: 1; margin-bottom: 2rem; font-size: 0.95rem; }
+    .c-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.3rem; }
+    .c-item__icon {
+      width: 44px; height: 44px; min-width: 44px; background: rgba(255,255,255,0.15);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .c-item small { font-size: 0.75rem; opacity: 1; color: rgba(255,255,255,0.85); display: block; margin-bottom: 0.15rem; }
+    .c-item strong { font-size: 0.95rem; }
+    .contact-box__cta { margin-top: 1.5rem; }
+    .contact-form-box {
+      background: var(--white); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow);
+    }
+    .contact-form-box h3 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .fg { margin-bottom: 1rem; }
+    .fg label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--dark); }
+    .fg input, .fg textarea {
+      width: 100%; padding: 0.8rem 1rem; border: 2px solid #e0ddd5; border-radius: 10px;
+      font-family: inherit; font-size: 0.9rem; transition: var(--transition); background: var(--bg);
+    }
+    .fg input:focus, .fg textarea:focus { outline: none; border-color: var(--primary); background: var(--white); }
+    .fg textarea { height: 100px; resize: vertical; }
+
+    /* CTA */
+    .cta {
+      background: var(--primary); color: var(--white); text-align: center; padding: 80px 2rem;
+    }
+    .cta h2 { color: var(--white); font-size: 2rem; margin-bottom: 1rem; }
+    .cta p {
+      opacity: 1; font-size: 1.05rem; max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .cta .btn--whatsapp { font-size: 1.1rem; padding: 1rem 2.5rem; }
+
+    /* FLOATING WHATSAPP */
+    .floating-whatsapp {
+      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
+      background: #0A7C5F; color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; box-shadow: 0 4px 20px rgba(10,124,95,0.4);
+      z-index: 998; transition: var(--transition); text-decoration: none;
+    }
+    .floating-whatsapp:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(10,124,95,0.5); }
+
+    /* FOOTER */
+    .footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 50px 2rem 25px; }
+    .footer__grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    .footer h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .footer h3 span { color: var(--accent); }
+    .footer h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 1rem; }
+    .footer p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem; }
+    .footer small { font-size: 0.75rem; opacity: 0.5; }
+    .footer ul li { margin-bottom: 0.5rem; }
+    .footer ul a { font-size: 0.85rem; opacity: 0.8; }
+    .footer ul a:hover { opacity: 1; color: var(--accent); }
+    .footer__bottom {
+      max-width: 1100px; margin: 2.5rem auto 0; padding-top: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.1); text-align: center;
+      font-size: 0.8rem; opacity: 0.5;
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .fade-in { opacity: 1; transform: none; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      .hero__grid, .grid-2, .contact-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero__title { font-size: 2.4rem; }
+      .hero__desc { margin: 0 auto 2rem; }
+      .hero__buttons { justify-content: center; }
+      .hero__img { order: -1; }
+      .hero__img img { width: 280px; height: 280px; }
+      .quals { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: var(--white); flex-direction: column; padding: 90px 2rem 2rem;
+        gap: 1.5rem; box-shadow: var(--shadow-lg); transition: right 0.3s ease;
+      }
+      .nav__links.active { right: 0; }
+      .nav__toggle { display: flex; }
+      .hero { min-height: auto; padding: 110px 1.5rem 50px; }
+      .hero__title { font-size: 2rem; }
+      .section { padding: 60px 1.5rem; }
+      .section-title { font-size: 1.8rem; }
+      .pricing, .cards { grid-template-columns: 1fr; }
+      .cta h2 { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 1.7rem; }
+      .hero__img img { width: 220px; height: 220px; }
+      .btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+      .hero__buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="header" id="top">
+    <nav class="nav">
+      <a href="#top" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links">
+        <li><a href="#sobre" class="nav__link">Sobre</a></li>
+        <li><a href="#abordagens" class="nav__link">Abordagens</a></li>
+        <li><a href="#formacoes" class="nav__link">Formações</a></li>
+        <li><a href="#investimento" class="nav__link">Investimento</a></li>
+        <li><a href="#contato" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__grid">
+      <div>
+        <span class="hero__tag">CRP 04/58314</span>
+        <h1 class="hero__title">Ingredy <span>Frois</span></h1>
+        <p class="hero__subtitle">Psicóloga Clínica</p>
+        <p class="hero__desc">
+          Especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.
+          Atuo com base na Terapia Cognitivo-Comportamental (TCC) e Terapia Comportamental Dialética (DBT).
+        </p>
+        <div class="hero__buttons">
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" target="_blank" rel="noopener">&#9742; Agendar via WhatsApp</a>
+          <a href="#sobre" class="btn btn--outline">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="hero__img">
+        <img src="IMG_4638.JPG.jpeg" alt="Ingredy Frois - Psicóloga Clínica" width="400" height="400" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section section--white" id="sobre">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <img src="IMG_4668.JPG.jpeg" alt="Ingredy Frois em atendimento" width="530" height="400" loading="lazy">
+        </div>
+        <div>
+          <span class="tag">Quem sou eu</span>
+          <h3>Compartilhar conhecimento é minha missão</h3>
+          <p>
+            Compartilho o conhecimento que construí ao longo da minha trajetória como Psicóloga Clínica
+            e Especialista em Transtornos de Humor, com ênfase no Transtorno Bipolar, integrando ciência,
+            acolhimento e prática baseada em evidências.
+          </p>
+          <p>
+            Acredito em um processo terapêutico estruturado, ético e individualizado, que promove
+            autonomia, autoconhecimento e estabilidade emocional.
+          </p>
+          <p>
+            Atuo há anos na área clínica, com dedicação especial ao cuidado de pessoas que convivem
+            com transtornos de humor e seus familiares.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ APRENDE -->
+  <section class="section" id="resultados">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Processo Terapêutico</span>
+        <h2 class="section-title">Como posso te ajudar</h2>
+        <p class="section-subtitle">Durante o processo, você vai desenvolver ferramentas para lidar melhor com suas emoções.</p>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon">&#128269;</div>
+          <h3 class="card__title">Reconhecer padrões</h3>
+          <p class="card__text">Identificar padrões emocionais e comportamentais que mantêm o sofrimento.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#9878;</div>
+          <h3 class="card__title">Lidar com crises</h3>
+          <p class="card__text">Enfrentar crises e sintomas intensos com mais estabilidade e clareza.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#129309;</div>
+          <h3 class="card__title">Fortalecer vínculos</h3>
+          <p class="card__text">Aprimorar sua relação consigo e com os outros de forma saudável.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127793;</div>
+          <h3 class="card__title">Sustentar os avanços</h3>
+          <p class="card__text">Manter o progresso mesmo diante das recaídas e dos desafios do tratamento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABORDAGENS -->
+  <section class="section section--alt" id="abordagens">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Abordagens</span>
+        <h2 class="section-title">Minhas Abordagens Terapêuticas</h2>
+      </div>
+      <div class="fade-in">
+        <div class="approach">
+          <h3>Terapia Cognitivo-Comportamental (TCC)</h3>
+          <p>Baseada em evidências científicas, a TCC foca no presente e ajuda a compreender como pensamentos e comportamentos influenciam emoções e decisões. Por meio de estratégias práticas, promove autoconhecimento, controle emocional e maior estabilidade do humor.</p>
+        </div>
+        <div class="approach">
+          <h3>Terapia Comportamental Dialética (DBT)</h3>
+          <p>Indicada para casos de instabilidade emocional, como no transtorno bipolar e borderline, a DBT ensina habilidades de regulação emocional, tolerância ao estresse, relações interpessoais e mindfulness. É uma abordagem estruturada que desenvolve equilíbrio, consciência e segurança nas relações e nas próprias emoções.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Psicoterapia Online</span>
+        <h2 class="section-title">Como funciona?</h2>
+      </div>
+      <div class="steps fade-in">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h4>Agendamento</h4>
+          <p>Entre em contato via WhatsApp para agendar sua primeira sessão.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h4>Sessão Online</h4>
+          <p>Sessões semanais de 50 minutos a 1 hora, realizadas de forma online.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h4>Plano Individualizado</h4>
+          <p>Cada encontro é planejado com base em evidências científicas.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <h4>Evolução Contínua</h4>
+          <p>Autoconhecimento e prática para alcançar estabilidade emocional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAÇÕES -->
+  <section class="section section--white" id="formacoes">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Formações</span>
+        <h2 class="section-title">Minhas Formações e Experiência</h2>
+      </div>
+      <div class="quals fade-in">
+        <div class="qual"><div class="qual__icon">&#127891;</div><p>Especialista em Terapia Cognitivo-Comportamental (TCC)</p></div>
+        <div class="qual"><div class="qual__icon">&#127891;</div><p>Especialização em Transtornos de Humor (Renato Silva)</p></div>
+        <div class="qual"><div class="qual__icon">&#128218;</div><p>Formação em Transtornos de Humor (Diego Tavares)</p></div>
+        <div class="qual"><div class="qual__icon">&#128218;</div><p>Formação em Terapia Comportamental Dialética (DBT)</p></div>
+        <div class="qual"><div class="qual__icon">&#128218;</div><p>Psicopatologia Clínica e Psicodiagnóstico</p></div>
+        <div class="qual"><div class="qual__icon">&#128218;</div><p>Terapia Cognitiva para Depressões Resistentes (Curt Hemanny)</p></div>
+        <div class="qual"><div class="qual__icon">&#127979;</div><p>Atuação no CAPS I &mdash; Grupo de Álcool e Drogas</p></div>
+        <div class="qual"><div class="qual__icon">&#128101;</div><p>Psicoeducação para familiares e pacientes com Transtorno Bipolar</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section class="section section--alt" id="investimento">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Investimento</span>
+        <h2 class="section-title">Escolha o plano ideal para você</h2>
+        <p class="section-subtitle">Cada acompanhamento é conduzido de forma estruturada, fundamentado em evidências científicas e constante atualização em saúde mental.</p>
+      </div>
+      <div class="pricing fade-in">
+        <div class="price-card">
+          <h3>Sessão Individual</h3>
+          <p class="desc">Atendimento online</p>
+          <p class="price">R$ 220<small>/sessão</small></p>
+          <p class="info">Duração: 50 min a 1 hora</p>
+          <ul>
+            <li>Sessão online individual</li>
+            <li>Abordagem TCC e/ou DBT</li>
+            <li>Plano terapêutico personalizado</li>
+            <li>Base em evidências científicas</li>
+          </ul>
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20individual." class="btn btn--primary btn--full" target="_blank" rel="noopener">Agendar Sessão</a>
+        </div>
+        <div class="price-card price-card--pop">
+          <h3>Pacote com 4 Sessões</h3>
+          <p class="desc">Acompanhamento mensal</p>
+          <p class="price">R$ 800<small>/mês</small></p>
+          <p class="info">Economia de R$ 80 (R$ 200/sessão)</p>
+          <ul>
+            <li>4 sessões online individuais</li>
+            <li>Abordagem TCC e/ou DBT</li>
+            <li>Plano terapêutico personalizado</li>
+            <li>Acompanhamento contínuo semanal</li>
+          </ul>
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20pacote%20de%204%20sess%C3%B5es." class="btn btn--primary btn--full" target="_blank" rel="noopener">Quero o Pacote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Vamos conversar?</h2>
+    <p>Se você sente que precisa de um acompanhamento sério, humano e fundamentado cientificamente, estou à disposição para conversar.</p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" target="_blank" rel="noopener">&#9742; Fale comigo no WhatsApp</a>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section" id="contato">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">Contato</span>
+        <h2 class="section-title">Entre em Contato</h2>
+      </div>
+      <div class="contact-grid fade-in">
+        <div class="contact-box">
+          <h3>Informações de Contato</h3>
+          <p>Será uma honra contribuir com seu processo de desenvolvimento e fortalecimento.</p>
+          <div class="c-item"><div class="c-item__icon">&#9742;</div><div><small>Telefone / WhatsApp</small><strong>(31) 98949-8642</strong></div></div>
+          <div class="c-item"><div class="c-item__icon">&#128247;</div><div><small>Instagram</small><strong>@psic.ingredy</strong></div></div>
+          <div class="c-item"><div class="c-item__icon">&#128187;</div><div><small>Atendimento</small><strong>Online (todo o Brasil)</strong></div></div>
+          <div class="c-item"><div class="c-item__icon">&#128203;</div><div><small>Registro</small><strong>CRP 04/58314</strong></div></div>
+          <div class="contact-box__cta">
+            <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp btn--full" target="_blank" rel="noopener">&#9742; Chamar no WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-form-box">
+          <h3>Envie uma mensagem</h3>
+          <form id="contactForm">
+            <div class="fg"><label for="name">Nome completo</label><input type="text" id="name" placeholder="Seu nome" required></div>
+            <div class="fg"><label for="phone">Telefone</label><input type="tel" id="phone" placeholder="(00) 00000-0000"></div>
+            <div class="fg"><label for="message">Mensagem</label><textarea id="message" placeholder="Conte um pouco sobre o que está buscando..."></textarea></div>
+            <button type="submit" class="btn btn--primary btn--full">Enviar via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#abordagens">Abordagens</a></li>
+          <li><a href="#formacoes">Formações</a></li>
+          <li><a href="#investimento">Investimento</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script>
+    // Mobile menu
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+    const navOverlay = document.querySelector('.nav__overlay');
+
+    function openMenu() {
+      navToggle.classList.add('active');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navLinks.classList.add('active');
+      if (navOverlay) navOverlay.classList.add('active');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('active');
+      if (navOverlay) navOverlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.contains('active') ? closeMenu() : openMenu();
+      });
+      document.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+      if (navOverlay) {
+        navOverlay.addEventListener('click', closeMenu);
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navToggle.classList.contains('active')) {
+          closeMenu();
+          navToggle.focus();
+        }
+      });
+    }
+
+    // Header scroll
+    const header = document.querySelector('.header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+    }
+
+    // Fade-in animations
+    const fadeEls = document.querySelectorAll('.fade-in');
+    if (fadeEls.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      fadeEls.forEach(el => observer.observe(el));
+    }
+
+    // Contact form -> WhatsApp
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        let text = `Olá, meu nome é ${name}.`;
+        if (phone) text += ` Meu telefone: ${phone}.`;
+        if (message) text += ` ${message}`;
+        window.open(`https://wa.me/5531989498642?text=${encodeURIComponent(text)}`, '_blank');
+      });
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ingredy Frois - Psicóloga Clínica",
+    "description": "Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.",
+    "url": "https://ingredyfrois.com.br",
+    "telephone": "+5531989498642",
+    "priceRange": "R$ 200 - R$ 220",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BR"
+    },
+    "areaServed": "BR",
+    "serviceType": "Psicoterapia Online",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "CRP",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Conselho Regional de Psicologia"
+      }
+    }
+  }
+  </script>
+</body>
+</html>

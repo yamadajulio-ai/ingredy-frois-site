@@ -1,0 +1,3779 @@
+Analise o site profissional abaixo de uma psicóloga clínica e dê uma nota de 0 a 10, avaliando:
+- Design visual e identidade
+- UX/UI e usabilidade mobile
+- SEO (meta tags, schema, sitemap, robots)
+- Acessibilidade (WCAG 2.1 AA)
+- Performance e boas práticas
+- Conversão e CTAs
+- Compliance (LGPD, termos, privacidade)
+
+Contexto: O site passou por 3 rodadas de melhorias baseadas em análises anteriores:
+- Rodada 1 (6.8/10): Correções WCAG de contraste, acessibilidade do menu, meta tags SEO
+- Rodada 2: Páginas de intenção SEO, focus trap no menu, CTA tracking, formulário melhorado
+- Rodada 3 (8.3/10): Skip link, <main> landmark, aria-current, hierarquia de headings, robots.txt, sitemap.xml, manifest, páginas de privacidade/termos LGPD, badge acessível, safe-area, autocomplete nos inputs, tel: link
+
+Aponte os TOP 5 melhorias restantes com maior impacto, incluindo código de exemplo.
+
+=== ESTRUTURA DO PROJETO ===
+10 páginas HTML + CSS + JS:
+- index.html (home)
+- sobre.html
+- abordagens.html
+- formacoes.html
+- investimento.html
+- contato.html
+- transtorno-bipolar.html (SEO intent)
+- depressao.html (SEO intent)
+- privacidade.html (LGPD)
+- termos.html (LGPD)
+- css/style.css
+- js/main.js
+- robots.txt, sitemap.xml, site.webmanifest
+
+
+=== index.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingredy Frois - Psicóloga Clínica | Especialista em Transtornos de Humor</title>
+  <meta name="description" content="Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão. Atendimento online com TCC e DBT.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/">
+  <meta property="og:title" content="Ingredy Frois - Psicóloga Clínica | Especialista em Transtornos de Humor">
+  <meta property="og:description" content="Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão. Atendimento online com TCC e DBT.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__container">
+      <div class="hero__content">
+        <span class="hero__tag">CRP 04/58314</span>
+        <h1 class="hero__title">Ingredy <span>Frois</span></h1>
+        <p class="hero__subtitle">Psicóloga Clínica</p>
+        <p class="hero__description">
+          Especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.
+          Atuo com base na Terapia Cognitivo-Comportamental (TCC) e Terapia Comportamental Dialética (DBT).
+        </p>
+        <div class="hero__buttons">
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="home-hero" target="_blank" rel="noopener">
+            &#9742; Agendar via WhatsApp
+          </a>
+          <a href="sobre.html" class="btn btn--outline">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <img src="IMG_4638.JPG.jpeg" alt="Ingredy Frois - Psicóloga Clínica" width="420" height="420" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Preview -->
+  <section class="section section--white">
+    <div class="section__container">
+      <div class="about-preview fade-in">
+        <div class="about-preview__image">
+          <img src="IMG_4668.JPG.jpeg" alt="Ingredy Frois em atendimento" width="530" height="400" loading="lazy">
+        </div>
+        <div class="about-preview__content">
+          <span class="section__tag">Quem sou eu</span>
+          <h2>Compartilhar conhecimento é minha missão</h2>
+          <p>
+            Compartilho o conhecimento que construí ao longo da minha trajetória como
+            Psicóloga Clínica e Especialista em Transtornos de Humor, integrando ciência,
+            acolhimento e prática baseada em evidências.
+          </p>
+          <p>
+            Acredito em um processo terapêutico estruturado, ético e individualizado, que
+            promove autonomia, autoconhecimento e estabilidade emocional.
+          </p>
+          <a href="sobre.html" class="btn btn--primary">Conheça minha história</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abordagens Preview -->
+  <section class="section">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Abordagens</span>
+        <h2 class="section__title">Como posso te ajudar</h2>
+        <p class="section__subtitle">
+          Durante o processo terapêutico, você vai desenvolver ferramentas para lidar melhor com suas emoções.
+        </p>
+      </div>
+      <div class="cards fade-in">
+        <a class="card card--link" href="transtorno-bipolar.html">
+          <div class="card__icon" aria-hidden="true">&#9829;</div>
+          <h3 class="card__title">Transtorno Bipolar</h3>
+          <p class="card__text">
+            Psicoterapia online com foco em estabilidade do humor e prevenção de crises.
+          </p>
+          <span class="card__cta">Saiba mais &rarr;</span>
+        </a>
+        <a class="card card--link" href="depressao.html">
+          <div class="card__icon" aria-hidden="true">&#9733;</div>
+          <h3 class="card__title">Depressão</h3>
+          <p class="card__text">
+            Acompanhamento estruturado para manejo de sintomas e retomada de rotina.
+          </p>
+          <span class="card__cta">Saiba mais &rarr;</span>
+        </a>
+        <a class="card card--link" href="abordagens.html">
+          <div class="card__icon" aria-hidden="true">&#9827;</div>
+          <h3 class="card__title">Abordagens (TCC e DBT)</h3>
+          <p class="card__text">
+            Conheça as bases científicas que fundamentam o trabalho clínico.
+          </p>
+          <span class="card__cta">Saiba mais &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Psicoterapia Online</span>
+        <h2 class="section__title">Como funciona a psicoterapia?</h2>
+      </div>
+      <div class="steps fade-in">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3 class="step__title">Agendamento</h3>
+          <p class="step__text">Entre em contato via WhatsApp para agendar sua primeira sessão.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Sessão Online</h3>
+          <p class="step__text">Sessões semanais de 50 minutos a 1 hora, realizadas de forma online.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3 class="step__title">Plano Individualizado</h3>
+          <p class="step__text">Cada encontro é planejado com base em evidências científicas.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">4</div>
+          <h3 class="step__title">Evolução Contínua</h3>
+          <p class="step__text">Autoconhecimento e prática para alcançar estabilidade emocional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Vamos conversar?</h2>
+    <p>
+      Se você sente que precisa de um acompanhamento sério, humano e fundamentado cientificamente,
+      estou à disposição para conversar.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="home-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="home-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ingredy Frois - Psicóloga Clínica",
+    "description": "Psicóloga clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.",
+    "url": "https://ingredyfrois.com.br",
+    "telephone": "+5531989498642",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BR"
+    },
+    "areaServed": "BR",
+    "serviceType": "Psicoterapia Online",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "CRP",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Conselho Regional de Psicologia"
+      }
+    }
+  }
+  </script>
+</body>
+</html>
+
+=== sobre.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Ingredy Frois | Psicóloga Clínica</title>
+  <meta name="description" content="Conheça a trajetória da psicóloga Ingredy Frois, especialista em Transtornos de Humor com ênfase no Transtorno Bipolar.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/sobre.html">
+  <meta property="og:title" content="Sobre - Ingredy Frois | Psicóloga Clínica">
+  <meta property="og:description" content="Conheça a trajetória da psicóloga Ingredy Frois, especialista em Transtornos de Humor com ênfase no Transtorno Bipolar.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/sobre.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Quem é a Psicóloga Ingredy Frois</h1>
+    <p>Conheça minha trajetória, missão e dedicação ao cuidado da saúde mental.</p>
+  </section>
+
+  <!-- Sobre Mim -->
+  <section class="section">
+    <div class="section__container">
+      <div class="about-preview fade-in">
+        <div class="about-preview__image">
+          <img src="IMG_4638.JPG.jpeg" alt="Ingredy Frois - Psicóloga Clínica" width="530" height="400" loading="lazy">
+        </div>
+        <div class="about-preview__content">
+          <span class="section__tag">Minha Missão</span>
+          <h2>Ciência, acolhimento e prática baseada em evidências</h2>
+          <p>
+            Compartilhar o conhecimento que construí ao longo da minha trajetória como Psicóloga
+            Clínica e Especialista em Transtornos de Humor, com ênfase no Transtorno Bipolar,
+            integrando ciência, acolhimento e prática baseada em evidências.
+          </p>
+          <p>
+            Acredito em um processo terapêutico estruturado, ético e individualizado, que promove
+            autonomia, autoconhecimento e estabilidade emocional.
+          </p>
+          <p>
+            Busco fazer isso através dos atendimentos clínicos, supervisões e conteúdos compartilhados
+            nas redes sociais &mdash; sempre com o objetivo de traduzir a psicologia em linguagem
+            acessível e transformadora.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre o Trabalho -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="about-preview about-preview--reverse fade-in">
+        <div class="about-preview__content">
+          <span class="section__tag">Meu Trabalho</span>
+          <h2>Dedicação especial ao cuidado de quem convive com transtornos de humor</h2>
+          <p>
+            Atuo há anos na área clínica, com dedicação especial ao cuidado de pessoas que convivem
+            com transtornos de humor e seus familiares.
+          </p>
+          <p>
+            Meu trabalho com a bipolaridade é ajudar você a compreender o transtorno de forma profunda,
+            reconhecer seus padrões de humor e desenvolver estratégias para lidar com as oscilações de
+            maneira mais estável e consciente.
+          </p>
+          <p>
+            Nas sessões, exploramos os fatores que influenciam o humor &mdash; como sono, rotina,
+            impulsividade e estresse &mdash; e identificamos sinais iniciais de mudança para agir
+            antes que as crises se intensifiquem.
+          </p>
+        </div>
+        <div class="about-preview__image">
+          <img src="IMG_4825.JPG.jpeg" alt="Ingredy Frois em sessão" width="530" height="400" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que você aprende -->
+  <section class="section">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Processo Terapêutico</span>
+        <h2 class="section__title">Durante o processo, você vai aprender a:</h2>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon">&#128269;</div>
+          <h3 class="card__title">Reconhecer padrões</h3>
+          <p class="card__text">
+            Identificar padrões emocionais e comportamentais que mantêm o sofrimento.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#9878;</div>
+          <h3 class="card__title">Lidar com crises</h3>
+          <p class="card__text">
+            Enfrentar crises e sintomas intensos com mais estabilidade e clareza.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#129309;</div>
+          <h3 class="card__title">Fortalecer vínculos</h3>
+          <p class="card__text">
+            Aprimorar sua relação consigo e com os outros.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127793;</div>
+          <h3 class="card__title">Sustentar os avanços</h3>
+          <p class="card__text">
+            Manter o progresso mesmo diante das recaídas e dos desafios do tratamento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Vamos conversar?</h2>
+    <p>
+      Se você sente que precisa de um acompanhamento sério, humano e fundamentado cientificamente,
+      estou à disposição para conversar.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="sobre-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="sobre-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== abordagens.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abordagens - Ingredy Frois | TCC e DBT</title>
+  <meta name="description" content="Conheça as abordagens terapêuticas utilizadas: Terapia Cognitivo-Comportamental (TCC) e Terapia Comportamental Dialética (DBT).">
+  <link rel="canonical" href="https://ingredyfrois.com.br/abordagens.html">
+  <meta property="og:title" content="Abordagens - Ingredy Frois | TCC e DBT">
+  <meta property="og:description" content="Conheça as abordagens terapêuticas utilizadas: Terapia Cognitivo-Comportamental (TCC) e Terapia Comportamental Dialética (DBT).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/abordagens.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Minhas Abordagens</h1>
+    <p>Conheça as bases científicas que fundamentam o meu trabalho clínico.</p>
+  </section>
+
+  <!-- TCC -->
+  <section class="section">
+    <div class="section__container">
+      <div class="approach-card fade-in">
+        <h2 class="approach-card__title">Terapia Cognitivo-Comportamental (TCC)</h2>
+        <p class="approach-card__text">
+          Baseada em evidências científicas, a TCC foca no presente e ajuda a compreender como
+          pensamentos e comportamentos influenciam emoções e decisões. Por meio de estratégias
+          práticas, promove autoconhecimento, controle emocional e maior estabilidade do humor.
+        </p>
+      </div>
+
+      <div class="approach-card fade-in">
+        <h2 class="approach-card__title">Terapia Comportamental Dialética (DBT)</h2>
+        <p class="approach-card__text">
+          Indicada para casos de instabilidade emocional, como no transtorno bipolar e borderline,
+          a DBT ensina habilidades de regulação emocional, tolerância ao estresse, relações
+          interpessoais e mindfulness. É uma abordagem estruturada que desenvolve equilíbrio,
+          consciência e segurança nas relações e nas próprias emoções.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades desenvolvidas -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Habilidades</span>
+        <h2 class="section__title">O que você desenvolve na terapia</h2>
+        <p class="section__subtitle">
+          Cada abordagem contribui para um conjunto de habilidades essenciais para a estabilidade emocional.
+        </p>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon">&#128161;</div>
+          <h3 class="card__title">Autoconhecimento</h3>
+          <p class="card__text">
+            Compreender como seus pensamentos influenciam suas emoções e comportamentos no dia a dia.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#9878;</div>
+          <h3 class="card__title">Regulação Emocional</h3>
+          <p class="card__text">
+            Aprender estratégias práticas para lidar com emoções intensas de forma saudável.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127793;</div>
+          <h3 class="card__title">Tolerância ao Estresse</h3>
+          <p class="card__text">
+            Desenvolver capacidade de enfrentar momentos difíceis sem recorrer a comportamentos prejudiciais.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#129309;</div>
+          <h3 class="card__title">Relações Interpessoais</h3>
+          <p class="card__text">
+            Fortalecer vínculos e aprimorar a comunicação nas suas relações pessoais e profissionais.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128993;</div>
+          <h3 class="card__title">Mindfulness</h3>
+          <p class="card__text">
+            Praticar a atenção plena para estar presente e consciente, reduzindo a reatividade emocional.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128202;</div>
+          <h3 class="card__title">Estabilidade do Humor</h3>
+          <p class="card__text">
+            Identificar sinais iniciais de mudança e agir antes que as crises se intensifiquem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="section">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Como Funciona</span>
+        <h2 class="section__title">Como funciona a psicoterapia?</h2>
+      </div>
+      <div class="about-preview fade-in">
+        <div class="about-preview__image">
+          <img src="IMG_4781.JPG.jpeg" alt="Sessão de terapia online" width="530" height="400" loading="lazy">
+        </div>
+        <div class="about-preview__content">
+          <p>
+            As sessões acontecem <strong>semanalmente</strong>, com duração média de
+            <strong>50 minutos a 1 hora</strong>, realizadas de forma <strong>online</strong>.
+          </p>
+          <p>
+            Cada encontro é cuidadosamente planejado e conduzido com base em evidências
+            científicas, em um espaço acolhedor e seguro.
+          </p>
+          <p>
+            A terapia é um processo que une autoconhecimento e prática &mdash; um caminho para
+            compreender emoções, fortalecer recursos internos e alcançar estabilidade emocional.
+          </p>
+          <a href="contato.html" class="btn btn--primary">Agende sua sessão</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Pronta para começar?</h2>
+    <p>
+      O primeiro passo é a decisão de cuidar de si. Estou aqui para te acompanhar nessa jornada.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20abordagens." class="btn btn--whatsapp" data-cta="whatsapp" data-location="abordagens-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="abordagens-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== formacoes.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formações - Ingredy Frois | Psicóloga Clínica</title>
+  <meta name="description" content="Conheça as formações e especializações da psicóloga Ingredy Frois em Transtornos de Humor, TCC e DBT.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/formacoes.html">
+  <meta property="og:title" content="Formações - Ingredy Frois | Psicóloga Clínica">
+  <meta property="og:description" content="Conheça as formações e especializações da psicóloga Ingredy Frois em Transtornos de Humor, TCC e DBT.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/formacoes.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Minhas Formações</h1>
+    <p>Especializações e formações que sustentam minha prática clínica com base em evidências.</p>
+  </section>
+
+  <!-- Formações Acadêmicas -->
+  <section class="section">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Especializações</span>
+        <h2 class="section__title">Formação Acadêmica e Especializações</h2>
+        <p class="section__subtitle">
+          Constante atualização científica em protocolos internacionais baseados em evidências.
+        </p>
+      </div>
+      <div class="qualifications fade-in">
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#127891;</div>
+          <p class="qualification-item__text">Especialista em Terapia Cognitivo-Comportamental (TCC)</p>
+        </div>
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#127891;</div>
+          <p class="qualification-item__text">Especialização em Transtornos de Humor (Renato Silva)</p>
+        </div>
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#128218;</div>
+          <p class="qualification-item__text">Formação em Transtornos de Humor (Diego Tavares)</p>
+        </div>
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#128218;</div>
+          <p class="qualification-item__text">Formação em Terapia Comportamental Dialética (DBT)</p>
+        </div>
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#128218;</div>
+          <p class="qualification-item__text">Psicopatologia Clínica e Psicodiagnóstico</p>
+        </div>
+        <div class="qualification-item">
+          <div class="qualification-item__icon">&#128218;</div>
+          <p class="qualification-item__text">Terapia Cognitiva para Depressões Resistentes (Curt Hemanny)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiência -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Experiência</span>
+        <h2 class="section__title">Atuação Profissional</h2>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon">&#127979;</div>
+          <h3 class="card__title">CAPS I</h3>
+          <p class="card__text">
+            Atuei no CAPS I, onde ministrei o Grupo de Álcool e Drogas.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128101;</div>
+          <h3 class="card__title">Psicoeducação</h3>
+          <p class="card__text">
+            Psicoeducação para familiares e pacientes com Transtorno Bipolar.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128300;</div>
+          <h3 class="card__title">Supervisões Clínicas</h3>
+          <p class="card__text">
+            Supervisões clínicas em casos complexos de transtornos de humor.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128214;</div>
+          <h3 class="card__title">Atualização Contínua</h3>
+          <p class="card__text">
+            Atualização científica contínua em protocolos internacionais baseados em evidências.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Vamos conversar?</h2>
+    <p>
+      Será uma honra poder contribuir com seu processo de desenvolvimento e fortalecimento.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="formacoes-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="formacoes-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== investimento.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investimento - Ingredy Frois | Psicoterapia Online</title>
+  <meta name="description" content="Saiba mais sobre o acompanhamento em psicoterapia online com a psicóloga Ingredy Frois. Sessão individual e acompanhamento mensal.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/investimento.html">
+  <meta property="og:title" content="Investimento - Ingredy Frois | Psicoterapia Online">
+  <meta property="og:description" content="Saiba mais sobre o acompanhamento em psicoterapia online com a psicóloga Ingredy Frois. Sessão individual e acompanhamento mensal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/investimento.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Investimento</h1>
+    <p>O valor das sessões reflete a formação técnica, a especialização e o compromisso ético presente em cada processo.</p>
+  </section>
+
+  <!-- Modalidades -->
+  <section class="section">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Acompanhamento</span>
+        <h2 class="section__title">Modalidades de atendimento</h2>
+        <p class="section__subtitle">
+          Cada acompanhamento é conduzido de forma estruturada, fundamentado em evidências científicas,
+          diretrizes internacionais e constante atualização científica em saúde mental.
+        </p>
+      </div>
+
+      <div class="pricing fade-in">
+        <!-- Sessão Individual -->
+        <div class="pricing-card">
+          <h3 class="pricing-card__title">Sessão Individual</h3>
+          <p class="pricing-card__desc">Atendimento online</p>
+          <p class="pricing-card__info">Duração: 50 min a 1 hora</p>
+          <ul class="pricing-card__features">
+            <li>Sessão online individual</li>
+            <li>Abordagem TCC e/ou DBT</li>
+            <li>Plano terapêutico personalizado</li>
+            <li>Base em evidências científicas</li>
+          </ul>
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20sobre%20honor%C3%A1rios%20e%20disponibilidade." class="btn btn--primary btn--full" data-cta="whatsapp" data-location="investimento-individual" target="_blank" rel="noopener">
+            Solicitar informações
+          </a>
+        </div>
+
+        <!-- Acompanhamento Semanal -->
+        <div class="pricing-card pricing-card--featured">
+          <span class="badge">Mais escolhido</span>
+          <h3 class="pricing-card__title">Acompanhamento Semanal</h3>
+          <p class="pricing-card__desc">4 sessões por mês</p>
+          <p class="pricing-card__info">Frequência semanal recomendada</p>
+          <ul class="pricing-card__features">
+            <li>4 sessões online individuais</li>
+            <li>Abordagem TCC e/ou DBT</li>
+            <li>Plano terapêutico personalizado</li>
+            <li>Base em evidências científicas</li>
+            <li>Acompanhamento contínuo semanal</li>
+          </ul>
+          <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20sobre%20o%20acompanhamento%20semanal." class="btn btn--primary btn--full" data-cta="whatsapp" data-location="investimento-semanal" target="_blank" rel="noopener">
+            Solicitar informações
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info pagamento -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Pagamento</span>
+        <h2 class="section__title">Formas de pagamento</h2>
+      </div>
+      <div class="cards cards--payment fade-in">
+        <div class="card card--center">
+          <div class="card__icon card__icon--center">&#128179;</div>
+          <h3 class="card__title">PIX</h3>
+          <p class="card__text">Transferência instantânea via PIX.</p>
+        </div>
+        <div class="card card--center">
+          <div class="card__icon card__icon--center">&#127974;</div>
+          <h3 class="card__title">Transferência Bancária</h3>
+          <p class="card__text">Transferência bancária convencional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Invista no seu bem-estar emocional</h2>
+    <p>
+      O cuidado com a saúde mental é um investimento em qualidade de vida. Estou aqui para te ajudar.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="investimento-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="investimento-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== contato.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Ingredy Frois | Agende sua Sessão</title>
+  <meta name="description" content="Entre em contato com a psicóloga Ingredy Frois. Agende sua sessão via WhatsApp ou Instagram.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/contato.html">
+  <meta property="og:title" content="Contato - Ingredy Frois | Agende sua Sessão">
+  <meta property="og:description" content="Entre em contato com a psicóloga Ingredy Frois. Agende sua sessão via WhatsApp ou Instagram.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/contato.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Vamos Conversar?</h1>
+    <p>Estou à disposição para conversar sobre como posso te ajudar.</p>
+  </section>
+
+  <!-- Contato -->
+  <section class="section">
+    <div class="section__container">
+      <div class="contact-grid fade-in">
+        <!-- Info -->
+        <div class="contact-info">
+          <h2>Informações de Contato</h2>
+          <p>
+            Se você sente que precisa de um acompanhamento sério, humano e fundamentado
+            cientificamente, será uma honra contribuir com seu processo de desenvolvimento
+            e fortalecimento.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">&#9742;</div>
+            <div>
+              <span class="contact-item__label">Telefone / WhatsApp</span>
+              <a href="tel:+5531989498642" class="contact-item__value">(31) 98949-8642</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">&#128247;</div>
+            <div>
+              <span class="contact-item__label">Instagram</span>
+              <span class="contact-item__value">@psic.ingredy</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">&#128187;</div>
+            <div>
+              <span class="contact-item__label">Atendimento</span>
+              <span class="contact-item__value">Online (todo o Brasil)</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">&#128203;</div>
+            <div>
+              <span class="contact-item__label">Registro</span>
+              <span class="contact-item__value">CRP 04/58314</span>
+            </div>
+          </div>
+
+          <div class="contact-info__cta">
+            <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="btn btn--whatsapp btn--full" data-cta="whatsapp" data-location="contato-info" target="_blank" rel="noopener">
+              &#9742; Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="contact-form">
+          <h2>Envie uma mensagem</h2>
+          <form id="contactForm" action="https://wa.me/5531989498642" method="get" target="_blank">
+            <input type="hidden" name="text" id="whatsappText">
+            <div class="form-group">
+              <label for="name">Nome completo</label>
+              <input type="text" id="name" placeholder="Seu nome" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" placeholder="Conte um pouco sobre o que está buscando..."></textarea>
+            </div>
+            <p class="form-disclaimer">
+              Ao enviar, seus dados serão redirecionados ao WhatsApp. Veja nossa
+              <a href="privacidade.html">Política de Privacidade</a>.
+            </p>
+            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+              Enviar via WhatsApp
+            </button>
+          </form>
+          <noscript>
+            <p>Para enviar sua mensagem pelo formulário, ative o JavaScript ou clique em "Chamar no WhatsApp".</p>
+          </noscript>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="section section--alt">
+    <div class="section__container section__container--center">
+      <div class="fade-in">
+        <span class="section__tag">Redes Sociais</span>
+        <h2 class="section__title">Me acompanhe no Instagram</h2>
+        <p class="section__subtitle">
+          Conteúdos sobre saúde mental, transtornos de humor e dicas práticas para o dia a dia.
+        </p>
+        <a href="https://instagram.com/psic.ingredy" class="btn btn--accent" target="_blank" rel="noopener">
+          &#128247; Seguir @psic.ingredy
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aviso de urgência -->
+  <section class="section section--white">
+    <div class="section__container">
+      <div class="notice fade-in">
+        <h2 class="notice__title">Em caso de urgência</h2>
+        <p class="notice__text">
+          Se você ou alguém próximo estiver em risco imediato, procure o serviço de urgência da sua cidade.
+          Você também pode ligar <strong>188</strong> (CVV &mdash; Centro de Valorização da Vida) ou <strong>192</strong> (SAMU).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="contato-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== transtorno-bipolar.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicóloga Especialista em Transtorno Bipolar Online | Ingredy Frois</title>
+  <meta name="description" content="Psicoterapia online especializada em Transtorno Bipolar. Acompanhamento com TCC e DBT para estabilidade do humor, prevenção de crises e qualidade de vida.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/transtorno-bipolar.html">
+  <meta property="og:title" content="Psicóloga Especialista em Transtorno Bipolar Online | Ingredy Frois">
+  <meta property="og:description" content="Psicoterapia online especializada em Transtorno Bipolar. Acompanhamento com TCC e DBT para estabilidade do humor e prevenção de crises.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/transtorno-bipolar.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Psicoterapia para Transtorno Bipolar</h1>
+    <p>Acompanhamento online especializado para estabilidade do humor e prevenção de crises.</p>
+  </section>
+
+  <!-- O que é -->
+  <section class="section">
+    <div class="section__container">
+      <div class="about-preview fade-in">
+        <div class="about-preview__image">
+          <img src="IMG_4638.JPG.jpeg" alt="Ingredy Frois - Psicóloga especialista em Transtorno Bipolar" width="530" height="400" loading="lazy">
+        </div>
+        <div class="about-preview__content">
+          <span class="section__tag">Transtorno Bipolar</span>
+          <h2>O que é o Transtorno Bipolar?</h2>
+          <p>
+            O Transtorno Bipolar é caracterizado por oscilações significativas de humor, que alternam
+            entre episódios de mania ou hipomania e episódios depressivos. Essas mudanças afetam
+            o sono, a energia, o comportamento e a capacidade de pensar com clareza.
+          </p>
+          <p>
+            Com acompanhamento adequado, é possível reconhecer os padrões do transtorno, desenvolver
+            estratégias de manejo e alcançar maior estabilidade emocional no dia a dia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona o acompanhamento -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Acompanhamento</span>
+        <h2 class="section__title">Como funciona o acompanhamento?</h2>
+        <p class="section__subtitle">
+          O trabalho terapêutico com bipolaridade é estruturado, individualizado e baseado em evidências científicas.
+        </p>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#128269;</div>
+          <h3 class="card__title">Reconhecimento de padrões</h3>
+          <p class="card__text">
+            Identificar gatilhos, sinais iniciais de episódios e padrões de humor que precedem crises.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#9878;</div>
+          <h3 class="card__title">Regulação emocional</h3>
+          <p class="card__text">
+            Desenvolver habilidades para lidar com emoções intensas sem recorrer a comportamentos prejudiciais.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#128203;</div>
+          <h3 class="card__title">Organização de rotina</h3>
+          <p class="card__text">
+            Estruturar sono, alimentação e atividades para promover estabilidade e prevenção de recaídas.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#129309;</div>
+          <h3 class="card__title">Psicoeducação</h3>
+          <p class="card__text">
+            Compreender o transtorno de forma profunda para tomar decisões mais conscientes sobre o tratamento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quem é -->
+  <section class="section">
+    <div class="section__container">
+      <div class="about-preview about-preview--reverse fade-in">
+        <div class="about-preview__content">
+          <span class="section__tag">Para quem é</span>
+          <h2>Este acompanhamento é para você se:</h2>
+          <p>
+            Você recebeu o diagnóstico de Transtorno Bipolar (tipo I, II ou ciclotimia) e busca
+            um acompanhamento estruturado para além da medicação.
+          </p>
+          <p>
+            Você percebe oscilações de humor que afetam seus relacionamentos, trabalho ou qualidade
+            de vida e quer entender melhor o que está acontecendo.
+          </p>
+          <p>
+            Você é familiar ou parceiro(a) de alguém com bipolaridade e deseja compreender o
+            transtorno para oferecer apoio adequado.
+          </p>
+        </div>
+        <div class="about-preview__image">
+          <img src="IMG_4825.JPG.jpeg" alt="Sessão de psicoterapia online" width="530" height="400" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Dúvidas frequentes</span>
+        <h2 class="section__title">Perguntas sobre o acompanhamento</h2>
+      </div>
+      <div class="faq fade-in">
+        <div class="faq-item">
+          <h3 class="faq-item__question">A psicoterapia ajuda no transtorno bipolar?</h3>
+          <p class="faq-item__answer">
+            Sim. A psicoterapia é uma parte fundamental do tratamento do transtorno bipolar,
+            complementando o acompanhamento psiquiátrico quando indicado. Através de técnicas
+            baseadas em evidências (TCC e DBT), trabalhamos o reconhecimento de padrões de humor,
+            manejo de rotina, sono, impulsividade e habilidades de regulação emocional.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Como funciona o atendimento online?</h3>
+          <p class="faq-item__answer">
+            As sessões acontecem por videochamada, com frequência semanal recomendada
+            e duração média de 50 minutos a 1 hora. O processo é conduzido com base em
+            um plano terapêutico individualizado, em um espaço seguro e acolhedor.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Preciso ter diagnóstico para iniciar?</h3>
+          <p class="faq-item__answer">
+            Não necessariamente. Se você percebe oscilações de humor significativas e
+            quer entender melhor o que está acontecendo, a psicoterapia pode ajudar nesse
+            processo de investigação e autoconhecimento.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">A terapia substitui a medicação?</h3>
+          <p class="faq-item__answer">
+            Não. A psicoterapia complementa o tratamento medicamentoso quando este é
+            indicado pelo psiquiatra. Ambos trabalham de forma integrada para promover
+            maior estabilidade e qualidade de vida.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Quer saber mais sobre o acompanhamento?</h2>
+    <p>
+      Se você busca um acompanhamento especializado, estou à disposição para conversar.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20acompanhamento%20para%20transtorno%20bipolar." class="btn btn--whatsapp" data-cta="whatsapp" data-location="bipolar-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="bipolar-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "A psicoterapia ajuda no transtorno bipolar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. A psicoterapia é uma parte fundamental do tratamento do transtorno bipolar, complementando o acompanhamento psiquiátrico quando indicado. Através de técnicas baseadas em evidências (TCC e DBT), trabalhamos o reconhecimento de padrões de humor, manejo de rotina, sono, impulsividade e habilidades de regulação emocional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o atendimento online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As sessões acontecem por videochamada, com frequência semanal recomendada e duração média de 50 minutos a 1 hora. O processo é conduzido com base em um plano terapêutico individualizado, em um espaço seguro e acolhedor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso ter diagnóstico para iniciar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não necessariamente. Se você percebe oscilações de humor significativas e quer entender melhor o que está acontecendo, a psicoterapia pode ajudar nesse processo de investigação e autoconhecimento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A terapia substitui a medicação?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. A psicoterapia complementa o tratamento medicamentoso quando este é indicado pelo psiquiatra. Ambos trabalham de forma integrada para promover maior estabilidade e qualidade de vida."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+=== depressao.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicóloga Especialista em Depressão Online | Ingredy Frois</title>
+  <meta name="description" content="Psicoterapia online especializada em depressão. Acompanhamento com TCC e DBT para manejo de sintomas, retomada de rotina e qualidade de vida.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/depressao.html">
+  <meta property="og:title" content="Psicóloga Especialista em Depressão Online | Ingredy Frois">
+  <meta property="og:description" content="Psicoterapia online especializada em depressão. Acompanhamento com TCC e DBT para manejo de sintomas e retomada de rotina.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredyfrois.com.br/depressao.html">
+  <meta property="og:image" content="https://ingredyfrois.com.br/IMG_4638.JPG.jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Psicoterapia para Depressão</h1>
+    <p>Acompanhamento online estruturado para manejo de sintomas depressivos e retomada da qualidade de vida.</p>
+  </section>
+
+  <!-- O que é -->
+  <section class="section">
+    <div class="section__container">
+      <div class="about-preview fade-in">
+        <div class="about-preview__image">
+          <img src="IMG_4668.JPG.jpeg" alt="Ingredy Frois - Psicóloga especialista em Depressão" width="530" height="400" loading="lazy">
+        </div>
+        <div class="about-preview__content">
+          <span class="section__tag">Depressão</span>
+          <h2>Entendendo a depressão</h2>
+          <p>
+            A depressão é mais do que tristeza passageira. É um transtorno de humor que afeta a forma
+            como você pensa, sente e lida com as atividades do dia a dia. Sintomas como perda de
+            interesse, fadiga, dificuldade de concentração e alterações no sono podem persistir
+            por semanas ou meses.
+          </p>
+          <p>
+            Com acompanhamento adequado, é possível compreender os fatores que mantêm o quadro
+            depressivo, desenvolver estratégias de enfrentamento e retomar progressivamente
+            a qualidade de vida.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona o acompanhamento -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Acompanhamento</span>
+        <h2 class="section__title">Como funciona o acompanhamento?</h2>
+        <p class="section__subtitle">
+          O trabalho terapêutico com depressão utiliza protocolos baseados em evidências para promover mudanças reais.
+        </p>
+      </div>
+      <div class="cards fade-in">
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#128161;</div>
+          <h3 class="card__title">Reestruturação cognitiva</h3>
+          <p class="card__text">
+            Identificar e modificar padrões de pensamento negativos que alimentam o ciclo depressivo.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#127793;</div>
+          <h3 class="card__title">Ativação comportamental</h3>
+          <p class="card__text">
+            Retomar atividades prazerosas e significativas de forma gradual e estruturada.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#9878;</div>
+          <h3 class="card__title">Regulação emocional</h3>
+          <p class="card__text">
+            Desenvolver habilidades para lidar com emoções difíceis sem se sentir sobrecarregado.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">&#128202;</div>
+          <h3 class="card__title">Prevenção de recaídas</h3>
+          <p class="card__text">
+            Criar estratégias para manter os avanços e reconhecer sinais precoces de novos episódios.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quem é -->
+  <section class="section">
+    <div class="section__container">
+      <div class="about-preview about-preview--reverse fade-in">
+        <div class="about-preview__content">
+          <span class="section__tag">Para quem é</span>
+          <h2>Este acompanhamento é para você se:</h2>
+          <p>
+            Você sente uma tristeza persistente, falta de energia ou perda de interesse
+            em atividades que antes eram prazerosas.
+          </p>
+          <p>
+            Você tem dificuldade para manter a rotina, o sono está desregulado ou sente
+            que não consegue funcionar como antes.
+          </p>
+          <p>
+            Você já passou por tratamentos anteriores que não trouxeram os resultados
+            esperados e busca uma abordagem estruturada e baseada em evidências.
+          </p>
+        </div>
+        <div class="about-preview__image">
+          <img src="IMG_4781.JPG.jpeg" alt="Sessão de psicoterapia para depressão" width="530" height="400" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="section__container">
+      <div class="section__header fade-in">
+        <span class="section__tag">Dúvidas frequentes</span>
+        <h2 class="section__title">Perguntas sobre o acompanhamento</h2>
+      </div>
+      <div class="faq fade-in">
+        <div class="faq-item">
+          <h3 class="faq-item__question">A psicoterapia é eficaz para depressão?</h3>
+          <p class="faq-item__answer">
+            Sim. A Terapia Cognitivo-Comportamental (TCC) é considerada padrão-ouro no
+            tratamento da depressão, com ampla evidência científica de eficácia. O trabalho
+            foca em identificar padrões de pensamento negativos e desenvolver estratégias
+            práticas para modificá-los.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Quanto tempo dura o tratamento?</h3>
+          <p class="faq-item__answer">
+            A duração varia conforme a gravidade dos sintomas e a resposta individual ao
+            tratamento. Em geral, protocolos de TCC para depressão trabalham com ciclos
+            estruturados, com reavaliações periódicas do progresso.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Preciso tomar medicação junto com a terapia?</h3>
+          <p class="faq-item__answer">
+            Depende da gravidade do quadro. Em casos leves a moderados, a psicoterapia
+            pode ser o tratamento principal. Em casos mais graves, a combinação com
+            acompanhamento psiquiátrico tende a trazer melhores resultados.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Como saber se o que sinto é depressão?</h3>
+          <p class="faq-item__answer">
+            Se você percebe tristeza persistente, perda de interesse, alterações no sono
+            ou apetite, fadiga e dificuldade de concentração por mais de duas semanas,
+            é importante buscar avaliação profissional. A psicoterapia pode ajudar nesse
+            processo de investigação.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Quer saber mais sobre o acompanhamento?</h2>
+    <p>
+      Se você busca um acompanhamento especializado para depressão, estou à disposição para conversar.
+    </p>
+    <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20acompanhamento%20para%20depress%C3%A3o." class="btn btn--whatsapp" data-cta="whatsapp" data-location="depressao-cta" target="_blank" rel="noopener">
+      &#9742; Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5531989498642?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." class="floating-whatsapp" data-cta="whatsapp" data-location="depressao-floating" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">&#9742;</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "A psicoterapia é eficaz para depressão?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. A Terapia Cognitivo-Comportamental (TCC) é considerada padrão-ouro no tratamento da depressão, com ampla evidência científica de eficácia. O trabalho foca em identificar padrões de pensamento negativos e desenvolver estratégias práticas para modificá-los."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo dura o tratamento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A duração varia conforme a gravidade dos sintomas e a resposta individual ao tratamento. Em geral, protocolos de TCC para depressão trabalham com ciclos estruturados, com reavaliações periódicas do progresso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso tomar medicação junto com a terapia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende da gravidade do quadro. Em casos leves a moderados, a psicoterapia pode ser o tratamento principal. Em casos mais graves, a combinação com acompanhamento psiquiátrico tende a trazer melhores resultados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como saber se o que sinto é depressão?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se você percebe tristeza persistente, perda de interesse, alterações no sono ou apetite, fadiga e dificuldade de concentração por mais de duas semanas, é importante buscar avaliação profissional. A psicoterapia pode ajudar nesse processo de investigação."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+=== privacidade.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade - Ingredy Frois | Psicóloga Clínica</title>
+  <meta name="description" content="Política de privacidade do site da psicóloga Ingredy Frois. Saiba como seus dados são tratados conforme a LGPD.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/privacidade.html">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Política de Privacidade</h1>
+    <p>Como seus dados são coletados, utilizados e protegidos neste site.</p>
+  </section>
+
+  <section class="section">
+    <div class="section__container">
+      <div class="legal-content">
+        <p><strong>Última atualização:</strong> Março de 2026</p>
+
+        <h2>1. Responsável pelo tratamento</h2>
+        <p>
+          Ingredy Frois &mdash; Psicóloga Clínica<br>
+          CRP 04/58314<br>
+          Contato: <a href="https://wa.me/5531989498642" target="_blank" rel="noopener">(31) 98949-8642</a>
+        </p>
+
+        <h2>2. Dados coletados</h2>
+        <p>Este site pode coletar os seguintes dados pessoais:</p>
+        <ul>
+          <li><strong>Formulário de contato:</strong> nome, e-mail, telefone e mensagem, fornecidos voluntariamente por você.</li>
+          <li><strong>Dados de navegação:</strong> informações anônimas como páginas visitadas, tempo de permanência e origem do acesso, coletadas via Google Analytics (quando ativo).</li>
+        </ul>
+
+        <h2>3. Finalidade do tratamento</h2>
+        <p>Os dados coletados são utilizados exclusivamente para:</p>
+        <ul>
+          <li>Responder às suas solicitações de contato.</li>
+          <li>Melhorar a experiência de navegação no site.</li>
+          <li>Gerar estatísticas anônimas de acesso.</li>
+        </ul>
+
+        <h2>4. Compartilhamento de dados</h2>
+        <p>
+          Seus dados pessoais <strong>não são vendidos, alugados ou compartilhados</strong> com terceiros
+          para fins comerciais. As informações enviadas pelo formulário de contato são redirecionadas
+          ao WhatsApp para facilitar a comunicação direta.
+        </p>
+
+        <h2>5. Base legal (LGPD)</h2>
+        <p>
+          O tratamento de dados pessoais neste site é realizado com base no <strong>consentimento do titular</strong>
+          (Art. 7º, I da Lei 13.709/2018 &mdash; LGPD), fornecido ao preencher voluntariamente o formulário de contato.
+        </p>
+
+        <h2>6. Seus direitos</h2>
+        <p>Conforme a LGPD, você tem direito a:</p>
+        <ul>
+          <li>Confirmar a existência de tratamento dos seus dados.</li>
+          <li>Acessar, corrigir ou solicitar a exclusão dos seus dados.</li>
+          <li>Revogar o consentimento a qualquer momento.</li>
+        </ul>
+        <p>
+          Para exercer seus direitos, entre em contato pelo WhatsApp:
+          <a href="https://wa.me/5531989498642" target="_blank" rel="noopener">(31) 98949-8642</a>.
+        </p>
+
+        <h2>7. Segurança</h2>
+        <p>
+          Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais
+          contra acesso não autorizado, perda ou destruição.
+        </p>
+
+        <h2>8. Alterações</h2>
+        <p>
+          Esta política pode ser atualizada periodicamente. Recomendamos que você consulte esta página
+          regularmente para se manter informado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== termos.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso - Ingredy Frois | Psicóloga Clínica</title>
+  <meta name="description" content="Termos de uso do site da psicóloga Ingredy Frois. Condições para utilização deste site.">
+  <link rel="canonical" href="https://ingredyfrois.com.br/termos.html">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Ingredy <span>Frois</span></a>
+      <ul class="nav__links" id="primary-navigation" aria-label="Navegação principal">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="sobre.html" class="nav__link">Sobre</a></li>
+        <li><a href="abordagens.html" class="nav__link">Abordagens</a></li>
+        <li><a href="formacoes.html" class="nav__link">Formações</a></li>
+        <li><a href="investimento.html" class="nav__link">Investimento</a></li>
+        <li><a href="contato.html" class="nav__link nav__cta">Agende sua Sessão</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="nav__overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Termos de Uso</h1>
+    <p>Condições para utilização deste site.</p>
+  </section>
+
+  <section class="section">
+    <div class="section__container">
+      <div class="legal-content">
+        <p><strong>Última atualização:</strong> Março de 2026</p>
+
+        <h2>1. Aceitação dos termos</h2>
+        <p>
+          Ao acessar e utilizar este site, você concorda com os termos e condições aqui descritos.
+          Caso não concorde, recomendamos que não utilize o site.
+        </p>
+
+        <h2>2. Natureza do conteúdo</h2>
+        <p>
+          O conteúdo disponibilizado neste site tem caráter <strong>informativo e educacional</strong>
+          sobre saúde mental e psicoterapia. As informações apresentadas <strong>não substituem</strong>
+          consulta, diagnóstico ou tratamento profissional.
+        </p>
+
+        <h2>3. Atendimento profissional</h2>
+        <p>
+          O agendamento de sessões e o atendimento clínico são realizados exclusivamente por meio
+          de contato direto via WhatsApp. O início do acompanhamento depende de avaliação prévia
+          e aceite mútuo entre profissional e paciente.
+        </p>
+
+        <h2>4. Sigilo profissional</h2>
+        <p>
+          Todo atendimento clínico é regido pelo <strong>Código de Ética Profissional do Psicólogo</strong>
+          (Resolução CFP n.º 010/2005) e pelas normas do Conselho Federal de Psicologia, garantindo
+          o sigilo das informações compartilhadas durante o processo terapêutico.
+        </p>
+
+        <h2>5. Propriedade intelectual</h2>
+        <p>
+          Todo o conteúdo deste site (textos, imagens, layout e identidade visual) é de propriedade
+          de Ingredy Frois e está protegido pelas leis de direitos autorais. A reprodução sem
+          autorização prévia é proibida.
+        </p>
+
+        <h2>6. Formulário de contato</h2>
+        <p>
+          As informações enviadas pelo formulário de contato são redirecionadas ao WhatsApp para
+          facilitar a comunicação. O tratamento desses dados segue a
+          <a href="privacidade.html">Política de Privacidade</a> deste site.
+        </p>
+
+        <h2>7. Situações de urgência</h2>
+        <p>
+          Este site e o atendimento psicológico oferecido <strong>não se destinam a atendimentos de urgência</strong>.
+          Em caso de risco imediato, procure o serviço de urgência da sua cidade, ligue para o
+          <strong>CVV: 188</strong> ou <strong>SAMU: 192</strong>.
+        </p>
+
+        <h2>8. Alterações</h2>
+        <p>
+          Estes termos podem ser atualizados periodicamente. Recomendamos que você consulte esta página
+          regularmente para se manter informado sobre quaisquer alterações.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h3>Ingredy <span>Frois</span></h3>
+        <p>Psicóloga Clínica especialista em Transtornos de Humor, com ênfase em bipolaridade e depressão.</p>
+        <small>CRP 04/58314</small>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="abordagens.html">Abordagens</a></li>
+          <li><a href="formacoes.html">Formações</a></li>
+          <li><a href="investimento.html">Investimento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__links">
+          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+=== css/style.css ===
+/* ===== RESET & BASE ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #5B7B6F;
+  --primary-dark: #4A6A5E;
+  --primary-light: #7A9B8F;
+  --accent: #C8A96E;
+  --accent-dark: #B0924F;
+  --bg: #F5F0E8;
+  --bg-alt: #EDE8DD;
+  --white: #FAFAF5;
+  --dark: #2D3436;
+  --text: #4A4A4A;
+  --text-light: #6B6B6B;
+  --shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+/* ===== HEADER / NAV ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(250, 250, 245, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.nav__logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.nav__logo span {
+  color: var(--accent);
+}
+
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav__link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  width: 100%;
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--primary);
+}
+
+.nav__cta {
+  background: var(--primary);
+  color: var(--white) !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.nav__cta::after {
+  display: none;
+}
+
+.nav__cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Mobile menu */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nav__toggle span {
+  width: 25px;
+  height: 2.5px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.nav__toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav__toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 2rem 60px;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+}
+
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero__tag {
+  display: inline-block;
+  background: rgba(91, 123, 111, 0.1);
+  color: var(--primary);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.hero__title span {
+  color: var(--primary);
+}
+
+.hero__subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.hero__description {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__image img {
+  width: 420px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--white);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(91, 123, 111, 0.3);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn--outline:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: #111;
+}
+
+.btn--accent:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(200, 169, 110, 0.3);
+}
+
+.btn--whatsapp {
+  background: #0A7C5F;
+  color: #fff;
+}
+
+.btn--whatsapp:hover {
+  background: #086B50;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(10, 124, 95, 0.3);
+}
+
+.btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 100px 2rem;
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section--white {
+  background: var(--white);
+}
+
+.section__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section__container--center {
+  text-align: center;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section__tag {
+  display: inline-block;
+  background: rgba(91, 123, 111, 0.1);
+  color: var(--primary);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.section__subtitle {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== ABOUT PREVIEW (Home) ===== */
+.about-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-preview__image img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.about-preview__content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-preview__content p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.about-preview__content .btn {
+  margin-top: 1rem;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(91, 123, 111, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.card__text {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.card--center {
+  text-align: center;
+}
+
+.card__icon--center {
+  margin: 0 auto 1.5rem;
+}
+
+.cards--payment {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== APPROACH CARDS ===== */
+.approach-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  margin-bottom: 2rem;
+}
+
+.approach-card__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+}
+
+.approach-card__text {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ===== QUALIFICATIONS LIST ===== */
+.qualifications {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.qualification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.qualification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.qualification-item__icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: rgba(91, 123, 111, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.qualification-item__text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ===== PROCESS STEPS ===== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  text-align: center;
+  padding: 2rem;
+}
+
+.step__number {
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.step__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.step__text {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* ===== PRICING ===== */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-card--featured {
+  border-color: var(--primary);
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.3rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pricing-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+
+.pricing-card__desc {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.pricing-card__price {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.pricing-card__price small {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.pricing-card__info {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.pricing-card__features {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.pricing-card__features li {
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pricing-card__features li::before {
+  content: '\2713';
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ===== CONTACT ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info {
+  padding: 2.5rem;
+  background: var(--primary);
+  border-radius: var(--radius);
+  color: var(--white);
+}
+
+.contact-info h3 {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  opacity: 1;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item__icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.contact-item__label {
+  font-size: 0.8rem;
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.contact-item__value {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.contact-info__cta {
+  margin-top: 2rem;
+}
+
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-form h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid #e0ddd5;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background: var(--bg);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-disclaimer {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.form-disclaimer a {
+  text-decoration: underline;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonial {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.testimonial::before {
+  content: '\201C';
+  font-size: 4rem;
+  color: var(--primary-light);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.testimonial__text {
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.testimonial__author {
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 0.9rem;
+}
+
+/* ===== CTA SECTION ===== */
+.cta {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 80px 2rem;
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  opacity: 1;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta .btn--whatsapp {
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 60px 2rem 30px;
+}
+
+.footer__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer__brand h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.footer__brand h3 span {
+  color: var(--accent);
+}
+
+.footer__brand p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer__brand small {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.footer h4 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer__links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer__links a {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.footer__links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.footer__bottom {
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 2rem 60px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+.page-header h1 {
+  color: var(--white);
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.page-header p {
+  opacity: 1;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== GALLERY (optional) ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* ===== ABOUT PREVIEW REVERSE ===== */
+.about-preview--reverse {
+  direction: ltr;
+}
+
+.about-preview--reverse .about-preview__image {
+  order: 2;
+}
+
+.about-preview--reverse .about-preview__content {
+  order: 1;
+}
+
+/* ===== NAV OVERLAY ===== */
+.nav__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.nav__overlay.active {
+  display: block;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ===== FLOATING WHATSAPP ===== */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background: #0A7C5F;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 20px rgba(10, 124, 95, 0.4);
+  z-index: 998;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(10, 124, 95, 0.5);
+}
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .floating-whatsapp {
+    bottom: max(24px, env(safe-area-inset-bottom));
+    right: max(24px, env(safe-area-inset-right));
+  }
+}
+
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-140%);
+  background: var(--white);
+  color: var(--dark);
+  padding: 0.75rem 1rem;
+  z-index: 2000;
+  border-radius: 0 0 12px 0;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ===== SR ONLY ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== FOCUS VISIBLE ===== */
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--primary-dark);
+  outline-offset: 3px;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ===== CARD LINK ===== */
+.card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card--link:hover {
+  color: inherit;
+}
+
+.card__cta {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.card--link:hover .card__cta {
+  text-decoration: underline;
+}
+
+/* ===== NOTICE ===== */
+.notice {
+  background: var(--bg-alt);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.notice__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+
+.notice__text {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ===== FAQ SECTION ===== */
+.faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.faq-item__question {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--dark);
+}
+
+.faq-item__answer {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: 2.4rem;
+  }
+
+  .hero__description {
+    margin: 0 auto 2rem;
+  }
+
+  .hero__buttons {
+    justify-content: center;
+  }
+
+  .hero__image {
+    order: -1;
+  }
+
+  .hero__image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .about-preview {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .qualifications {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    padding: 100px 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav__links.active {
+    right: 0;
+  }
+
+  .nav__overlay {
+    z-index: 999;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 120px 1.5rem 60px;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 60px 1.5rem;
+  }
+
+  .section__title {
+    font-size: 1.8rem;
+  }
+
+  .pricing {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    padding: 120px 1.5rem 40px;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .cta h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 1.7rem;
+  }
+
+  .hero__image img {
+    width: 240px;
+    height: 240px;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ===== Legal Pages ===== */
+.legal-content {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.legal-content h2 {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin: 2rem 0 0.75rem;
+}
+
+.legal-content p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.legal-content ul {
+  margin: 0 0 1rem 1.5rem;
+  color: var(--text);
+}
+
+.legal-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+=== js/main.js ===
+// ===== Mobile Menu Toggle =====
+const navToggle = document.querySelector('.nav__toggle');
+const navLinks = document.querySelector('.nav__links');
+const navOverlay = document.querySelector('.nav__overlay');
+
+let removeTrap = null;
+
+function trapFocus(container) {
+  const selectors = 'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+  const focusables = Array.from(container.querySelectorAll(selectors))
+    .filter(el => !el.hasAttribute('disabled'));
+
+  if (focusables.length === 0) return () => {};
+
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+
+  function handleKeydown(e) {
+    if (e.key !== 'Tab') return;
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  document.addEventListener('keydown', handleKeydown);
+  first.focus();
+
+  return () => document.removeEventListener('keydown', handleKeydown);
+}
+
+function openMenu() {
+  navToggle.classList.add('active');
+  navToggle.setAttribute('aria-expanded', 'true');
+  navToggle.setAttribute('aria-label', 'Fechar menu');
+  navLinks.classList.add('active');
+  if (navOverlay) navOverlay.classList.add('active');
+  document.body.classList.add('menu-open');
+
+  if (navLinks) removeTrap = trapFocus(navLinks);
+}
+
+function closeMenu() {
+  navToggle.classList.remove('active');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-label', 'Abrir menu');
+  navLinks.classList.remove('active');
+  if (navOverlay) navOverlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
+  if (removeTrap) {
+    removeTrap();
+    removeTrap = null;
+  }
+}
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.classList.contains('active');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu when clicking overlay
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeMenu);
+  }
+
+  // Close menu with ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navToggle.classList.contains('active')) {
+      closeMenu();
+      navToggle.focus();
+    }
+  });
+}
+
+// ===== Header scroll effect =====
+const header = document.querySelector('.header');
+
+if (header) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+}
+
+// ===== Scroll animations =====
+const fadeElements = document.querySelectorAll('.fade-in');
+
+if (fadeElements.length > 0) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
+}
+
+// ===== Active nav link based on current page =====
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav__link').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+  }
+});
+
+// ===== CTA Tracking =====
+function track(eventName, params) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+    return;
+  }
+  // fallback for development
+  console.log('[track]', eventName, params);
+}
+
+document.querySelectorAll('a[data-cta="whatsapp"]').forEach(el => {
+  el.addEventListener('click', () => {
+    track('click_whatsapp', {
+      page: currentPage,
+      location: el.dataset.location || 'unknown'
+    });
+  });
+});
+
+// ===== Contact Form → WhatsApp redirect =====
+const contactForm = document.getElementById('contactForm');
+const whatsappText = document.getElementById('whatsappText');
+
+if (contactForm && whatsappText) {
+  contactForm.addEventListener('submit', function() {
+    const name = document.getElementById('name')?.value?.trim() || '';
+    const phone = document.getElementById('phone')?.value?.trim() || '';
+    const email = document.getElementById('email')?.value?.trim() || '';
+    const message = document.getElementById('message')?.value?.trim() || '';
+
+    let text = `Olá! Meu nome é ${name}.`;
+    if (phone) text += ` Telefone: ${phone}.`;
+    if (email) text += ` E-mail: ${email}.`;
+    if (message) text += ` ${message}`;
+
+    whatsappText.value = text;
+
+    track('submit_contact_form', { page: currentPage });
+  });
+}
+
+=== robots.txt ===
+User-agent: *
+Allow: /
+
+Sitemap: https://ingredyfrois.com.br/sitemap.xml
+
+=== sitemap.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ingredyfrois.com.br/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/sobre.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/abordagens.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/formacoes.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/investimento.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/contato.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/transtorno-bipolar.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/depressao.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/privacidade.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ingredyfrois.com.br/termos.html</loc>
+    <priority>0.3</priority>
+  </url>
+</urlset>
+
+=== site.webmanifest ===
+{
+  "name": "Ingredy Frois - Psicóloga Clínica",
+  "short_name": "Ingredy Frois",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#5B7B6F",
+  "background_color": "#F5F0E8",
+  "display": "standalone",
+  "start_url": "/"
+}

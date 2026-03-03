@@ -277,6 +277,39 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
 }
 
+.hero__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(131,58,180,0.08), rgba(225,48,108,0.08), rgba(247,119,55,0.08));
+  border: 1px solid rgba(225,48,108,0.15);
+  color: #C13584;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.hero__instagram:hover {
+  background: linear-gradient(135deg, rgba(131,58,180,0.15), rgba(225,48,108,0.15), rgba(247,119,55,0.15));
+  border-color: rgba(225,48,108,0.3);
+  transform: translateY(-1px);
+  color: #A02070;
+}
+
+.hero__instagram svg {
+  flex-shrink: 0;
+}
+
+.hero__instagram-label {
+  color: var(--text-light);
+  font-weight: 400;
+  font-size: 0.82rem;
+  margin-left: 0.25rem;
+}
+
 .hero__image {
   display: flex;
   justify-content: center;

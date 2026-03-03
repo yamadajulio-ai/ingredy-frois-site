@@ -169,3 +169,27 @@ if (contactForm && whatsappText) {
     track('submit_contact_form', { page: currentPage });
   });
 }
+
+// ===== WhatsApp Chat Widget =====
+const waBtn = document.getElementById('waBtn');
+const waChat = document.getElementById('waChat');
+const waClose = document.getElementById('waClose');
+
+if (waBtn && waChat) {
+  waBtn.addEventListener('click', () => {
+    waChat.classList.toggle('active');
+  });
+
+  if (waClose) {
+    waClose.addEventListener('click', () => {
+      waChat.classList.remove('active');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const widget = document.getElementById('waWidget');
+    if (widget && !widget.contains(e.target)) {
+      waChat.classList.remove('active');
+    }
+  });
+}

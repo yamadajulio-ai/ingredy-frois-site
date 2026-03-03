@@ -1014,6 +1014,96 @@ body.menu-open {
   overflow: hidden;
 }
 
+/* ===== INSTAGRAM SECTION ===== */
+.instagram-section {
+  background: var(--white);
+}
+
+.instagram-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.instagram-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.instagram-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.instagram-card__avatar {
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid var(--accent);
+  padding: 2px;
+  background: var(--white);
+}
+
+.instagram-card__handle {
+  display: block;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 1rem;
+}
+
+.instagram-card__label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.instagram-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.instagram-card__topics span {
+  background: rgba(91, 123, 111, 0.1);
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  border: 1px solid rgba(91, 123, 111, 0.15);
+}
+
+.instagram-card__bio {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.instagram-card__btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+  border: none;
+}
+
+.instagram-card__btn:hover {
+  background: linear-gradient(135deg, #7232A0, #C92A5E, #E06B2F);
+}
+
 /* ===== WHATSAPP CHAT WIDGET ===== */
 .wa-widget {
   position: fixed;

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logos IF - Escolha sua favorita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #F5F0E8;
+      color: #2D3436;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #5B7B6F;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6B6B6B;
+      margin-bottom: 50px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #FAFAF5;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h3 {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #5B7B6F;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: #6B6B6B;
+      margin-top: 6px;
+    }
+    .logo-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== LOGO 1 - Classic Circle ===== */
+    .logo-1 {
+      width: 160px; height: 160px;
+      border: 2px solid #5B7B6F;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .logo-1::before {
+      content: '';
+      position: absolute;
+      width: 148px; height: 148px;
+      border: 0.5px solid #C8A96E;
+      border-radius: 50%;
+    }
+    .logo-1 span {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      font-weight: 400;
+      color: #5B7B6F;
+      letter-spacing: -3px;
+    }
+
+    /* ===== LOGO 2 - Gold Underline ===== */
+    .logo-2 {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .logo-2 span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: #5B7B6F;
+      letter-spacing: 12px;
+    }
+    .logo-2 .line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, #C8A96E, transparent);
+    }
+    .logo-2 .dots {
+      display: flex; gap: 6px;
+    }
+    .logo-2 .dots i {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: #C8A96E;
+    }
+
+    /* ===== LOGO 3 - Square Frame ===== */
+    .logo-3 {
+      width: 140px; height: 140px;
+      border: 1.5px solid #5B7B6F;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .logo-3::before {
+      content: '';
+      position: absolute;
+      width: 130px; height: 130px;
+      border: 0.5px solid #C8A96E;
+    }
+    .logo-3 span {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 52px;
+      font-weight: 400;
+      color: #5B7B6F;
+      letter-spacing: -2px;
+    }
+
+    /* ===== LOGO 4 - Botanical ===== */
+    .logo-4 {
+      display: flex; flex-direction: column; align-items: center; position: relative;
+    }
+    .logo-4 span {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 400;
+      font-style: italic;
+      color: #5B7B6F;
+      letter-spacing: -2px;
+    }
+    .logo-4 svg { margin-top: -5px; }
+
+    /* ===== LOGO 5 - Dark Elegance ===== */
+    .logo-5 {
+      width: 160px; height: 160px;
+      background: #5B7B6F;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .logo-5::before {
+      content: '';
+      position: absolute;
+      width: 148px; height: 148px;
+      border: 0.5px solid #C8A96E;
+      border-radius: 50%;
+    }
+    .logo-5 span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 60px;
+      font-weight: 400;
+      color: #FAFAF5;
+      letter-spacing: -2px;
+    }
+
+    /* ===== LOGO 6 - Vertical Stack ===== */
+    .logo-6 {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .logo-6 .letters {
+      display: flex; flex-direction: column; align-items: center; line-height: 0.85;
+    }
+    .logo-6 .letter-i {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 400; color: #5B7B6F;
+    }
+    .logo-6 .letter-f {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 400; color: #C8A96E;
+    }
+    .logo-6 .divider {
+      width: 40px; height: 0.5px; background: #5B7B6F; margin: 6px 0;
+    }
+
+    /* ===== LOGO 7 - Arc Monogram ===== */
+    .logo-7 {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .logo-7 span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 60px;
+      font-weight: 400;
+      color: #5B7B6F;
+      letter-spacing: -2px;
+    }
+
+    /* ===== LOGO 8 - Diamond ===== */
+    .logo-8 {
+      width: 140px; height: 140px;
+      border: 1.5px solid #5B7B6F;
+      transform: rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .logo-8::before {
+      content: '';
+      position: absolute;
+      width: 128px; height: 128px;
+      border: 0.5px solid #C8A96E;
+    }
+    .logo-8 span {
+      transform: rotate(-45deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #5B7B6F;
+      letter-spacing: -2px;
+    }
+
+    /* ===== LOGO 9 - Split ===== */
+    .logo-9 {
+      display: flex; align-items: center; gap: 0;
+    }
+    .logo-9 .left {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 70px; font-weight: 600;
+      color: #5B7B6F;
+    }
+    .logo-9 .sep {
+      width: 1.5px; height: 60px;
+      background: #C8A96E;
+      margin: 0 8px;
+    }
+    .logo-9 .right {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 70px; font-weight: 300;
+      color: #5B7B6F;
+    }
+
+    /* ===== LOGO 10 - Hexagon ===== */
+    .logo-10 {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-10 span {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 50px;
+      font-weight: 400;
+      color: #5B7B6F;
+      letter-spacing: -1px;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Escolha a Logo IF</h1>
+  <p class="subtitle">Clique na que mais gostar e me diga o numero</p>
+
+  <div class="grid">
+
+    <!-- LOGO 1 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-1">
+          <span>IF</span>
+        </div>
+      </div>
+      <h3>1 - Classic Circle</h3>
+      <p>Circulo duplo com serif Playfair Display</p>
+    </div>
+
+    <!-- LOGO 2 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-2">
+          <span>IF</span>
+          <div class="line"></div>
+          <div class="dots"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <h3>2 - Gold Underline</h3>
+      <p>Minimalista com linha dourada e tipografia leve</p>
+    </div>
+
+    <!-- LOGO 3 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-3">
+          <span>IF</span>
+        </div>
+      </div>
+      <h3>3 - Square Frame</h3>
+      <p>Moldura quadrada dupla com Bodoni Moda</p>
+    </div>
+
+    <!-- LOGO 4 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-4">
+          <span>IF</span>
+          <svg width="80" height="30" viewBox="0 0 80 30">
+            <path d="M 10 20 Q 20 5 30 15 Q 40 25 50 10 Q 55 5 60 10 Q 65 18 70 12" fill="none" stroke="#C8A96E" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 25 22 Q 30 10 35 18 Q 40 28 48 15" fill="none" stroke="#5B7B6F" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+            <circle cx="30" cy="13" r="1.5" fill="#C8A96E" opacity="0.6"/>
+            <circle cx="55" cy="8" r="1" fill="#C8A96E" opacity="0.6"/>
+          </svg>
+        </div>
+      </div>
+      <h3>4 - Botanical Italic</h3>
+      <p>Italico elegante com ramos decorativos</p>
+    </div>
+
+    <!-- LOGO 5 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-5">
+          <span>IF</span>
+        </div>
+      </div>
+      <h3>5 - Dark Elegance</h3>
+      <p>Fundo verde sage com letras brancas e aro dourado</p>
+    </div>
+
+    <!-- LOGO 6 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-6">
+          <div class="letters">
+            <span class="letter-i">I</span>
+            <div class="divider"></div>
+            <span class="letter-f">F</span>
+          </div>
+        </div>
+      </div>
+      <h3>6 - Vertical Stack</h3>
+      <p>Letras empilhadas com divisoria e cores alternadas</p>
+    </div>
+
+    <!-- LOGO 7 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-7">
+          <svg width="100" height="16" viewBox="0 0 100 16">
+            <path d="M 15 14 Q 50 0 85 14" fill="none" stroke="#C8A96E" stroke-width="0.8"/>
+            <circle cx="15" cy="14" r="1.5" fill="#C8A96E"/>
+            <circle cx="85" cy="14" r="1.5" fill="#C8A96E"/>
+          </svg>
+          <span>IF</span>
+          <svg width="100" height="16" viewBox="0 0 100 16">
+            <path d="M 15 2 Q 50 16 85 2" fill="none" stroke="#C8A96E" stroke-width="0.8"/>
+            <circle cx="15" cy="2" r="1.5" fill="#C8A96E"/>
+            <circle cx="85" cy="2" r="1.5" fill="#C8A96E"/>
+          </svg>
+        </div>
+      </div>
+      <h3>7 - Arc Monogram</h3>
+      <p>Arcos dourados acima e abaixo com DM Serif</p>
+    </div>
+
+    <!-- LOGO 8 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-8">
+          <span>IF</span>
+        </div>
+      </div>
+      <h3>8 - Diamond</h3>
+      <p>Losango elegante com moldura dupla</p>
+    </div>
+
+    <!-- LOGO 9 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-9">
+          <span class="left">I</span>
+          <div class="sep"></div>
+          <span class="right">F</span>
+        </div>
+      </div>
+      <h3>9 - Split Monogram</h3>
+      <p>Letras separadas por barra dourada, peso contrastante</p>
+    </div>
+
+    <!-- LOGO 10 -->
+    <div class="card">
+      <div class="logo-container">
+        <div class="logo-10">
+          <svg width="160" height="160" viewBox="0 0 160 160" style="position: absolute;">
+            <polygon points="80,5 155,42 155,118 80,155 5,118 5,42" fill="none" stroke="#5B7B6F" stroke-width="1.5"/>
+            <polygon points="80,12 148,46 148,114 80,148 12,114 12,46" fill="none" stroke="#C8A96E" stroke-width="0.5"/>
+          </svg>
+          <span>IF</span>
+        </div>
+      </div>
+      <h3>10 - Hexagon</h3>
+      <p>Hexagono duplo com Bodoni Moda</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

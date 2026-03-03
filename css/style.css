@@ -235,8 +235,28 @@ h1, h2, h3, h4 {
 .hero__description {
   font-size: 1.05rem;
   color: var(--text);
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   max-width: 500px;
+}
+
+.hero__credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  max-width: 520px;
+  list-style: none;
+  padding: 0;
+}
+
+.hero__credentials li {
+  background: rgba(91, 123, 111, 0.1);
+  color: var(--primary-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(91, 123, 111, 0.2);
 }
 
 .hero__buttons {
@@ -255,6 +275,7 @@ h1, h2, h3, h4 {
   width: 420px;
   height: 420px;
   object-fit: cover;
+  object-position: center 20%;
   border-radius: 50%;
   box-shadow: var(--shadow-lg);
   border: 6px solid var(--white);
@@ -1176,6 +1197,11 @@ body.menu-open {
   }
 
   .hero__description {
+    margin: 0 auto 1.2rem;
+  }
+
+  .hero__credentials {
+    justify-content: center;
     margin: 0 auto 2rem;
   }
 

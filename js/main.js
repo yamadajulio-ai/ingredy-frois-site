@@ -176,6 +176,13 @@ const waChat = document.getElementById('waChat');
 const waClose = document.getElementById('waClose');
 
 if (waBtn && waChat) {
+  // Auto-open after 8s only if user hasn't closed it before
+  if (!localStorage.getItem('wa_widget_closed')) {
+    setTimeout(() => {
+      waChat.classList.add('active');
+    }, 8000);
+  }
+
   waBtn.addEventListener('click', () => {
     waChat.classList.toggle('active');
   });
@@ -183,6 +190,7 @@ if (waBtn && waChat) {
   if (waClose) {
     waClose.addEventListener('click', () => {
       waChat.classList.remove('active');
+      localStorage.setItem('wa_widget_closed', '1');
     });
   }
 

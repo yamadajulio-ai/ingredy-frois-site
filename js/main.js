@@ -129,6 +129,42 @@ document.querySelectorAll('.nav__link').forEach(link => {
   }
 });
 
+// ===== Back to top button =====
+(function() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Voltar ao topo');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ===== Stagger animations (cards, steps, qualifications) =====
+const staggerContainers = document.querySelectorAll('.cards.fade-in, .steps.fade-in, .qualifications.fade-in');
+if (staggerContainers.length > 0) {
+  const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        staggerObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  staggerContainers.forEach(el => staggerObserver.observe(el));
+}
+
 // ===== CTA Tracking =====
 function track(eventName, params) {
   if (typeof window.gtag === 'function') {

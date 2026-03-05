@@ -12,3 +12,7 @@ desktop.ini
 
 # Claude Code
 .claude/
+
+# Backups e arquivos temporarios de edicao
+IMG_2503_ORIGINAL_BACKUP.JPEG
+IMG_2503_edited.png

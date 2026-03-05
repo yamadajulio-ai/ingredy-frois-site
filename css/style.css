@@ -236,7 +236,7 @@ h1, h2, h3, h4 {
 }
 
 .hero__title span {
-  color: var(--primary);
+  color: var(--dark);
 }
 
 .hero__subtitle {

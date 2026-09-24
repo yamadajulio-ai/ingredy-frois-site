@@ -618,43 +618,6 @@ h1, h2, h3, h4 {
   color: var(--text);
 }
 
-/* ===== PROCESS STEPS ===== */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-}
-
-.step {
-  text-align: center;
-  padding: 2rem;
-}
-
-.step__number {
-  width: 60px;
-  height: 60px;
-  background: var(--primary);
-  color: var(--white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0 auto 1.5rem;
-}
-
-.step__title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.step__text {
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
 /* ===== PRICING ===== */
 .pricing {
   display: grid;
@@ -1351,29 +1314,6 @@ body.menu-open {
   border-radius: 4px;
 }
 
-/* ===== CARD LINK ===== */
-.card--link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.card--link:hover {
-  color: inherit;
-}
-
-.card__cta {
-  display: inline-block;
-  margin-top: 1rem;
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 0.95rem;
-}
-
-.card--link:hover .card__cta {
-  text-decoration: underline;
-}
-
 /* ===== NOTICE ===== */
 .notice {
   background: var(--bg-alt);
@@ -1522,14 +1462,6 @@ body.menu-open {
 }
 
 /* ===== SECTION INTRO (compact header-only section) ===== */
-.section--intro {
-  padding-bottom: 0;
-}
-
-.section__header--no-margin {
-  margin-bottom: 0;
-}
-
 /* ===== PROSE (long-form text) ===== */
 .prose {
   max-width: 860px;
@@ -1553,24 +1485,6 @@ body.menu-open {
 }
 
 /* ===== LIST (bullet list) ===== */
-.list {
-  list-style: disc;
-  padding-left: 1.25rem;
-}
-
-.list li {
-  margin-bottom: 0.5rem;
-}
-
-.list__link {
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.list__link:hover {
-  color: var(--primary-dark);
-}
 
 /* ===== PRICING SINGLE ===== */
 .pricing--single {
@@ -1916,18 +1830,3 @@ body.menu-open {
   transform: translateY(0);
 }
 
-.steps .step:nth-child(1) { transition-delay: 0s; }
-.steps .step:nth-child(2) { transition-delay: 0.1s; }
-.steps .step:nth-child(3) { transition-delay: 0.2s; }
-.steps .step:nth-child(4) { transition-delay: 0.3s; }
-
-.steps.fade-in .step {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.steps.fade-in.visible .step {
-  opacity: 1;
-  transform: translateY(0);
-}

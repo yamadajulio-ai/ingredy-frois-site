@@ -1562,6 +1562,16 @@ body.menu-open {
   margin-bottom: 0.5rem;
 }
 
+.list__link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.list__link:hover {
+  color: var(--primary-dark);
+}
+
 /* ===== PRICING SINGLE ===== */
 .pricing--single {
   max-width: 440px;
@@ -1622,11 +1632,10 @@ body.menu-open {
 
   .hero__image {
     order: -1;
-  }
-
-  .hero__image img {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 1;
   }
 
   .about-preview {
@@ -1715,13 +1724,18 @@ body.menu-open {
 }
 
 @media (max-width: 480px) {
+  .hero__tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.3px;
+    padding: 0.4rem 1rem;
+  }
+
   .hero__title {
     font-size: 1.7rem;
   }
 
-  .hero__image img {
-    width: 240px;
-    height: 240px;
+  .hero__image {
+    width: 260px;
   }
 
   .btn {

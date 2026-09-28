@@ -166,13 +166,20 @@ if (staggerContainers.length > 0) {
 }
 
 // ===== CTA Tracking =====
+// Eventos do site enviados ao Pixel da Meta (fbq só existe após o consentimento, ver consent.js).
+// Só a posição do botão vai para a Meta: o nome da página pode indicar uma condição de saúde.
+const META_EVENTS = {
+  click_whatsapp: 'Contact'
+};
+
 function track(eventName, params) {
+  const metaEvent = META_EVENTS[eventName];
+  if (metaEvent && typeof window.fbq === 'function') {
+    window.fbq('track', metaEvent, { content_name: params.location });
+  }
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, params);
-    return;
   }
-  // fallback for development
-  console.log('[track]', eventName, params);
 }
 
 document.querySelectorAll('a[data-cta="whatsapp"]').forEach(el => {

@@ -1,0 +1,70 @@
+/* ===== Aviso de cookies (usado pelo site e pela landing page) ===== */
+.footer__cookie-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer__cookie-btn:hover {
+  text-decoration: underline;
+}
+
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1100;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.cookie-banner[hidden] {
+  display: none;
+}
+
+.cookie-banner__text {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.cookie-banner__text a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cookie-banner__btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .cookie-banner__actions .cookie-banner__btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

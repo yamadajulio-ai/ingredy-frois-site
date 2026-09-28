@@ -22,6 +22,7 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#5B7B6F">
   <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/consent.css?v=1">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
@@ -211,14 +212,14 @@
       <div>
         <h4>Contato</h4>
         <ul class="footer__links">
-          <li><a href="https://wa.me/5531989498642" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
+          <li><a href="https://wa.me/5531989498642" data-cta="whatsapp" data-location="rodape" target="_blank" rel="noopener">WhatsApp: (31) 98949-8642</a></li>
           <li><a href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Instagram: @psic.ingredy</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <p>&copy; 2026 Ingredy Frois - Psicóloga Clínica. Todos os direitos reservados.</p>
-      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a></p>
+      <p><a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Uso</a> | <button type="button" class="footer__cookie-btn" data-cookie-settings>Preferências de cookies</button></p>
     </div>
   </footer>
 
@@ -248,7 +249,8 @@
     </button>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/consent.js?v=1"></script>
+  <script src="js/main.js?v=2"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

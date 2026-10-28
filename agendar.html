@@ -46,13 +46,8 @@
     .pa__options { display: grid; gap: 10px; margin-top: 6px; }
     .pa__opt { display: block; width: 100%; text-align: left; font: inherit; font-size: 1rem; color: var(--dark, #2D3436); background: #fff; border: 1.5px solid var(--bg-alt, #EDE8DD); border-radius: 10px; padding: 15px 16px; cursor: pointer; transition: border-color .2s, background .2s; }
     .pa__opt:hover, .pa__opt:focus-visible { border-color: var(--primary, #5B7B6F); background: #F7FAF8; outline: none; }
-    .pa__field { display: block; margin: 6px 0 18px; }
-    .pa__field label { display: block; font-weight: 600; color: var(--dark, #2D3436); margin-bottom: 6px; }
-    .pa__field input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; padding: 14px 16px; border: 1.5px solid var(--bg-alt, #EDE8DD); border-radius: 10px; background: #fff; color: var(--dark, #2D3436); }
-    .pa__field input:focus { outline: none; border-color: var(--primary, #5B7B6F); }
     .pa__btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; font: inherit; font-weight: 600; font-size: 1rem; color: #fff; background: #0A7C5F; border: 0; border-radius: 50px; padding: 15px 28px; cursor: pointer; text-decoration: none; transition: filter .2s; }
     .pa__btn:hover { filter: brightness(1.08); }
-    .pa__btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
     .pa__back { display: inline-block; margin-top: 16px; background: none; border: 0; font: inherit; font-size: .9rem; color: var(--text-light, #5A5A5A); text-decoration: underline; cursor: pointer; padding: 4px 0; }
     .pa__note { font-size: .82rem; color: var(--text-light, #5A5A5A); margin: 14px 0 0; }
     .pa__note a { color: inherit; }
@@ -138,15 +133,11 @@
         <button type="button" class="pa__back" data-back>Voltar</button>
       </section>
 
-      <!-- 5. Qualificado: nome + WhatsApp -->
+      <!-- 5. Qualificado: abre o WhatsApp sozinho, com botão reserva -->
       <section class="pa__step" data-step="5">
-        <h2>Tudo certo! Vamos marcar o seu horário.</h2>
-        <p>Me diga como prefere ser chamado(a), e eu te respondo pelo WhatsApp com os horários disponíveis.</p>
-        <div class="pa__field">
-          <label for="paNome">Seu nome</label>
-          <input id="paNome" type="text" autocomplete="given-name" maxlength="60" placeholder="Como prefere ser chamado(a)">
-        </div>
-        <a class="pa__btn" id="paWhats" href="#" target="_blank" rel="noopener" aria-disabled="true">Continuar no WhatsApp</a>
+        <h2>Tudo certo! Abrindo seu WhatsApp…</h2>
+        <p>Em instantes o WhatsApp abre com a sua mensagem pronta. É só tocar em <strong>Enviar</strong>, e eu te respondo com os horários disponíveis.</p>
+        <a class="pa__btn" id="paWhats" href="#" rel="noopener">Se o WhatsApp não abrir, toque aqui</a>
         <p class="pa__note">Suas respostas não ficam salvas neste site. Elas só vão na mensagem que você mesmo envia para mim pelo WhatsApp. Saiba mais na <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
         <button type="button" class="pa__back" data-back>Voltar</button>
       </section>
@@ -174,17 +165,19 @@
 (function () {
   var WHATSAPP = '5531989498642';
   var TOTAL_PERGUNTAS = 4;
+  // Espera antes de abrir o WhatsApp: dá tempo do Lead chegar à Meta antes de a pessoa sair do site
+  var REDIRECT_DELAY_MS = 2000;
 
   var steps = Array.prototype.slice.call(document.querySelectorAll('.pa__step'));
   var bar = document.getElementById('paBar');
   var count = document.getElementById('paCount');
-  var nome = document.getElementById('paNome');
   var whats = document.getElementById('paWhats');
   var stopText = document.getElementById('paStopText');
   var respostas = {};
   var historico = [0];
   var iniciou = false;
   var leadEnviado = false;
+  var redirectTimer = null;
 
   // Frase da mensagem do WhatsApp para cada resposta da pergunta 2 (valor e formato)
   var MSG_VALOR = {
@@ -227,6 +220,7 @@
 
   document.querySelectorAll('[data-back]').forEach(function (b) {
     b.addEventListener('click', function () {
+      cancelarRedirecionamento();
       if (historico.length > 1) historico.pop();
       mostrar(historico[historico.length - 1]);
     });
@@ -243,43 +237,51 @@
         return;
       }
       ir(atual + 1);
-      if (atual + 1 === 5) atualizarLink();
+      if (atual + 1 === 5) qualificado();
     });
   });
 
   document.getElementById('paRestart').addEventListener('click', function () {
+    cancelarRedirecionamento();
     respostas = {}; historico = [0]; mostrar(0);
   });
 
   function mensagem() {
-    var n = nome.value.trim();
-    var partes = ['Olá, Ingredy! ' + (n ? 'Sou ' + n + '. ' : '') + 'Fiz o pré-agendamento no site.'];
+    var partes = ['Olá, Ingredy! Fiz o pré-agendamento no site.'];
     partes.push('Acompanhamento: ' + respostas.paraQuem + '.');
     partes.push(MSG_VALOR[respostas.valor] || MSG_VALOR['ok com o valor']);
     partes.push('Consigo fazer sessões semanais e gostaria de começar ' + respostas.quando + '.');
     return partes.join(' ');
   }
 
-  function atualizarLink() {
-    var pronto = nome.value.trim().length >= 2;
-    whats.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensagem());
-    whats.setAttribute('aria-disabled', pronto ? 'false' : 'true');
+  function registrarLead() {
+    if (leadEnviado) return;
+    leadEnviado = true;
+    pixel('track', 'Lead');      // evento de otimização da campanha: só quem passou no filtro
+    pixel('track', 'Contact');   // mantém o Contact coerente com o resto do site
   }
 
-  nome.addEventListener('input', atualizarLink);
-  nome.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && whats.getAttribute('aria-disabled') === 'false') whats.click();
-  });
-
-  whats.addEventListener('click', function (e) {
-    if (whats.getAttribute('aria-disabled') === 'true') { e.preventDefault(); nome.focus(); return; }
-    atualizarLink();
-    if (!leadEnviado) {
-      leadEnviado = true;
-      pixel('track', 'Lead');      // evento de otimização da campanha: só quem passou no filtro
-      pixel('track', 'Contact');   // mantém o Contact coerente com o resto do site
+  function cancelarRedirecionamento() {
+    if (redirectTimer) {
+      clearTimeout(redirectTimer);
+      redirectTimer = null;
     }
-  });
+  }
+
+  // Passou nas 4 perguntas: registra o Lead e abre o WhatsApp sozinho depois de REDIRECT_DELAY_MS
+  function qualificado() {
+    var link = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensagem());
+    whats.href = link;
+    registrarLead();
+    cancelarRedirecionamento();
+    redirectTimer = setTimeout(function () {
+      redirectTimer = null;
+      window.location.href = link;
+    }, REDIRECT_DELAY_MS);
+  }
+
+  // Botão reserva: abre na hora e cancela a abertura automática para não abrir duas vezes
+  whats.addEventListener('click', cancelarRedirecionamento);
 
   mostrar(0);
 })();

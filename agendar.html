@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pré-agendamento | Ingredy Frois - Psicóloga Clínica</title>
+  <meta name="description" content="Pré-agendamento de sessão com Ingredy Frois, psicóloga clínica especialista em Transtornos do Humor. Atendimento on-line.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://ingredyfrois.com.br/agendar.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#5B7B6F">
+  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/consent.css?v=1">
+  <style>
+    /* Estilos só desta página. Usam as variáveis do style.css, com valores de reserva. */
+    .pa { min-height: 100vh; background: var(--bg, #F5F0E8); color: var(--text, #4A4A4A); font-family: "DM Sans", "Segoe UI", sans-serif; display: flex; flex-direction: column; }
+    .pa__top { display: flex; align-items: center; gap: 10px; padding: 18px 20px; max-width: 640px; width: 100%; margin: 0 auto; font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.15rem; color: var(--dark, #2D3436); text-decoration: none; }
+    .pa__top img { width: 36px; height: 36px; }
+    .pa__top span { color: var(--primary, #5B7B6F); }
+    .pa__main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 8px 16px 40px; }
+    .pa__card { background: var(--white, #FAFAF5); border-radius: var(--radius, 12px); box-shadow: var(--shadow, 0 2px 20px rgba(0,0,0,.08)); padding: 28px 22px; }
+    @media (min-width: 560px) { .pa__card { padding: 36px 36px; } }
+    .pa__pro { display: flex; align-items: center; gap: 16px; margin: 0 0 22px; }
+    .pa__pro img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 4px solid var(--white, #FAFAF5); box-shadow: var(--shadow, 0 2px 20px rgba(0,0,0,.08)); flex-shrink: 0; }
+    .pa__pro-name { display: block; font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.15rem; color: var(--dark, #2D3436); }
+    .pa__pro-role { display: block; font-size: .9rem; line-height: 1.45; color: var(--text-light, #5A5A5A); }
+    @media (min-width: 560px) { .pa__pro img { width: 104px; height: 104px; } }
+    .pa__progress { height: 6px; background: var(--bg-alt, #EDE8DD); border-radius: 99px; overflow: hidden; margin-bottom: 8px; }
+    .pa__bar { height: 100%; width: 0; background: var(--primary, #5B7B6F); transition: width .35s ease; }
+    .pa__count { font-size: .85rem; color: var(--text-light, #5A5A5A); margin: 0 0 22px; }
+    .pa__step { display: none; }
+    .pa__step.is-active { display: block; animation: paIn .3s ease; }
+    @keyframes paIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .pa h1, .pa h2 { font-family: "Playfair Display", serif; color: var(--dark, #2D3436); line-height: 1.25; margin: 0 0 12px; }
+    .pa h1 { font-size: 1.6rem; }
+    .pa h1:focus, .pa h2:focus { outline: none; }
+    .pa h2 { font-size: 1.3rem; }
+    .pa p { line-height: 1.6; margin: 0 0 14px; }
+    .pa__info { background: var(--bg, #F5F0E8); border-left: 3px solid var(--accent, #C8A96E); border-radius: 8px; padding: 14px 16px; margin: 0 0 18px; line-height: 1.6; }
+    .pa__info strong { color: var(--dark, #2D3436); }
+    .pa__options { display: grid; gap: 10px; margin-top: 6px; }
+    .pa__opt { display: block; width: 100%; text-align: left; font: inherit; font-size: 1rem; color: var(--dark, #2D3436); background: #fff; border: 1.5px solid var(--bg-alt, #EDE8DD); border-radius: 10px; padding: 15px 16px; cursor: pointer; transition: border-color .2s, background .2s; }
+    .pa__opt:hover, .pa__opt:focus-visible { border-color: var(--primary, #5B7B6F); background: #F7FAF8; outline: none; }
+    .pa__field { display: block; margin: 6px 0 18px; }
+    .pa__field label { display: block; font-weight: 600; color: var(--dark, #2D3436); margin-bottom: 6px; }
+    .pa__field input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; padding: 14px 16px; border: 1.5px solid var(--bg-alt, #EDE8DD); border-radius: 10px; background: #fff; color: var(--dark, #2D3436); }
+    .pa__field input:focus { outline: none; border-color: var(--primary, #5B7B6F); }
+    .pa__btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; font: inherit; font-weight: 600; font-size: 1rem; color: #fff; background: #0A7C5F; border: 0; border-radius: 50px; padding: 15px 28px; cursor: pointer; text-decoration: none; transition: filter .2s; }
+    .pa__btn:hover { filter: brightness(1.08); }
+    .pa__btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+    .pa__back { display: inline-block; margin-top: 16px; background: none; border: 0; font: inherit; font-size: .9rem; color: var(--text-light, #5A5A5A); text-decoration: underline; cursor: pointer; padding: 4px 0; }
+    .pa__note { font-size: .82rem; color: var(--text-light, #5A5A5A); margin: 14px 0 0; }
+    .pa__note a { color: inherit; }
+    .pa__footer { text-align: center; font-size: .8rem; color: var(--text-light, #5A5A5A); padding: 0 16px 28px; }
+    .pa__footer a { color: inherit; }
+  </style>
+</head>
+<body>
+<div class="pa">
+  <!-- Sem link: quem vem dos anúncios precisa passar pela pré-qualificação -->
+  <div class="pa__top">
+    <img src="logo-if.png" alt="" width="36" height="36"> Ingredy <span>Frois</span>
+  </div>
+
+  <main class="pa__main">
+    <div class="pa__pro">
+      <img src="foto-perfil.jpg" alt="Ingredy Frois, psicóloga clínica" width="104" height="104">
+      <div>
+        <span class="pa__pro-name">Ingredy Frois</span>
+        <span class="pa__pro-role">Psicóloga clínica, especialista em transtornos do humor<br>Atendimento on-line · CRP 04/58314</span>
+      </div>
+    </div>
+    <div class="pa__card">
+      <div class="pa__progress" aria-hidden="true"><div class="pa__bar" id="paBar"></div></div>
+      <p class="pa__count" id="paCount" aria-live="polite"></p>
+
+      <!-- 0. Abertura -->
+      <section class="pa__step is-active" data-step="0">
+        <h1>Pré-agendamento</h1>
+        <p>São 4 perguntas rápidas, que levam menos de 1 minuto. Elas me ajudam a entender se o meu atendimento faz sentido para você antes de conversarmos.</p>
+        <button type="button" class="pa__btn" data-next>Começar</button>
+      </section>
+
+      <!-- 1. Para quem -->
+      <section class="pa__step" data-step="1" data-q="paraQuem">
+        <h2>O acompanhamento é para quem?</h2>
+        <div class="pa__options">
+          <button type="button" class="pa__opt" data-value="para mim">Para mim</button>
+          <button type="button" class="pa__opt" data-value="para um familiar ou pessoa próxima">Para um familiar ou pessoa próxima</button>
+          <button type="button" class="pa__opt" data-value="orientação para mim, como familiar">Quero orientação para lidar com alguém da família</button>
+        </div>
+        <button type="button" class="pa__back" data-back>Voltar</button>
+      </section>
+
+      <!-- 2. Valor e formato -->
+      <section class="pa__step" data-step="2" data-q="valor">
+        <h2>Como funciona o atendimento</h2>
+        <div class="pa__info">
+          Sessões <strong>on-line</strong>, de <strong>50 minutos a 1 hora</strong>, no valor de <strong>R$ 270</strong>.<br>
+          O atendimento é <strong>particular</strong>, e eu emito recibo para você pedir <strong>reembolso ao seu plano de saúde</strong>.
+        </div>
+        <p>Isso funciona para você neste momento?</p>
+        <div class="pa__options">
+          <button type="button" class="pa__opt" data-value="ok com o valor" data-ok>Sim, funciona para mim</button>
+          <button type="button" class="pa__opt" data-value="ok com o valor, usando reembolso do plano" data-ok>Sim, pedindo reembolso ao meu plano</button>
+          <button type="button" class="pa__opt" data-value="nao" data-stop="valor">No momento não cabe no meu orçamento</button>
+        </div>
+        <button type="button" class="pa__back" data-back>Voltar</button>
+      </section>
+
+      <!-- 3. Frequência -->
+      <section class="pa__step" data-step="3" data-q="frequencia">
+        <h2>As sessões são semanais.</h2>
+        <p>Para o acompanhamento ter resultado, os encontros acontecem uma vez por semana. Isso cabe na sua rotina?</p>
+        <div class="pa__options">
+          <button type="button" class="pa__opt" data-value="semanal" data-ok>Sim, consigo toda semana</button>
+          <button type="button" class="pa__opt" data-value="nao" data-stop="frequencia">Não consigo toda semana</button>
+        </div>
+        <button type="button" class="pa__back" data-back>Voltar</button>
+      </section>
+
+      <!-- 4. Quando -->
+      <section class="pa__step" data-step="4" data-q="quando">
+        <h2>Quando você gostaria de começar?</h2>
+        <div class="pa__options">
+          <button type="button" class="pa__opt" data-value="esta semana" data-ok>Esta semana</button>
+          <button type="button" class="pa__opt" data-value="nas próximas semanas" data-ok>Nas próximas semanas</button>
+          <button type="button" class="pa__opt" data-value="nao" data-stop="quando">Ainda estou só pesquisando</button>
+        </div>
+        <button type="button" class="pa__back" data-back>Voltar</button>
+      </section>
+
+      <!-- 5. Qualificado: nome + WhatsApp -->
+      <section class="pa__step" data-step="5">
+        <h2>Tudo certo! Vamos marcar o seu horário.</h2>
+        <p>Me diga como prefere ser chamado(a), e eu te respondo pelo WhatsApp com os horários disponíveis.</p>
+        <div class="pa__field">
+          <label for="paNome">Seu nome</label>
+          <input id="paNome" type="text" autocomplete="given-name" maxlength="60" placeholder="Como prefere ser chamado(a)">
+        </div>
+        <a class="pa__btn" id="paWhats" href="#" target="_blank" rel="noopener" aria-disabled="true">Continuar no WhatsApp</a>
+        <p class="pa__note">Suas respostas não ficam salvas neste site. Elas só vão na mensagem que você mesmo envia para mim pelo WhatsApp. Saiba mais na <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+        <button type="button" class="pa__back" data-back>Voltar</button>
+      </section>
+
+      <!-- Não qualificado -->
+      <section class="pa__step" data-step="stop">
+        <h2>Obrigada pela sinceridade.</h2>
+        <p id="paStopText"></p>
+        <p>Enquanto isso, no meu Instagram eu compartilho conteúdos sobre transtornos do humor que podem te ajudar.</p>
+        <a class="pa__btn" href="https://instagram.com/psic.ingredy" target="_blank" rel="noopener">Ver o Instagram @psic.ingredy</a>
+        <button type="button" class="pa__back" id="paRestart">Refazer as respostas</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pa__footer">
+    Ingredy Frois · Psicóloga Clínica · CRP 04/58314<br>
+    <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> · <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a> ·
+    <button type="button" class="footer__cookie-btn" data-cookie-settings style="background:none;border:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;padding:0">Preferências de cookies</button>
+  </footer>
+</div>
+
+<script src="js/consent.js?v=2"></script>
+<script>
+(function () {
+  var WHATSAPP = '5531989498642';
+  var TOTAL_PERGUNTAS = 4;
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.pa__step'));
+  var bar = document.getElementById('paBar');
+  var count = document.getElementById('paCount');
+  var nome = document.getElementById('paNome');
+  var whats = document.getElementById('paWhats');
+  var stopText = document.getElementById('paStopText');
+  var respostas = {};
+  var historico = [0];
+  var iniciou = false;
+  var leadEnviado = false;
+
+  var STOP_MSG = {
+    valor: 'Entendo que este não é o momento. Se a sua situação mudar, este pré-agendamento continua aqui, e eu vou adorar conversar com você.',
+    frequencia: 'Como o acompanhamento é semanal, talvez agora não seja o melhor momento. Quando a sua rotina permitir, este pré-agendamento continua aqui.',
+    quando: 'Sem pressa. Quando você se sentir pronto(a) para começar, é só voltar aqui e fazer o pré-agendamento.'
+  };
+
+  // Eventos para o Pixel da Meta. O fbq só existe depois que o visitante aceita os cookies (consent.js).
+  // Nunca enviar respostas ao Meta: só o nome do evento, sem parâmetros.
+  function pixel(tipo, evento) {
+    if (typeof window.fbq === 'function') window.fbq(tipo, evento);
+  }
+
+  function mostrar(id) {
+    steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.step === String(id)); });
+    var n = typeof id === 'number' ? Math.min(id, TOTAL_PERGUNTAS) : TOTAL_PERGUNTAS;
+    bar.style.width = (id === 0 ? 0 : (n / TOTAL_PERGUNTAS) * 100) + '%';
+    count.textContent = (typeof id === 'number' && id >= 1 && id <= TOTAL_PERGUNTAS) ? ('Pergunta ' + id + ' de ' + TOTAL_PERGUNTAS) : '';
+    var ativo = document.querySelector('.pa__step.is-active');
+    var foco = ativo && ativo.querySelector('h1, h2');
+    if (foco && id !== 0) { foco.setAttribute('tabindex', '-1'); foco.focus({ preventScroll: true }); }
+    if (id !== 0) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function ir(id) { historico.push(id); mostrar(id); }
+
+  document.querySelectorAll('[data-next]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (!iniciou) { iniciou = true; pixel('trackCustom', 'InicioPreAgendamento'); }
+      ir(1);
+    });
+  });
+
+  document.querySelectorAll('[data-back]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (historico.length > 1) historico.pop();
+      mostrar(historico[historico.length - 1]);
+    });
+  });
+
+  document.querySelectorAll('.pa__opt').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var step = opt.closest('.pa__step');
+      var atual = Number(step.dataset.step);
+      respostas[step.dataset.q] = opt.dataset.value;
+      if (opt.dataset.stop) {
+        stopText.textContent = STOP_MSG[opt.dataset.stop];
+        ir('stop');
+        return;
+      }
+      ir(atual + 1);
+      if (atual + 1 === 5) atualizarLink();
+    });
+  });
+
+  document.getElementById('paRestart').addEventListener('click', function () {
+    respostas = {}; historico = [0]; mostrar(0);
+  });
+
+  function mensagem() {
+    var n = nome.value.trim();
+    var partes = ['Olá, Ingredy! ' + (n ? 'Sou ' + n + '. ' : '') + 'Fiz o pré-agendamento no site.'];
+    partes.push('Acompanhamento: ' + respostas.paraQuem + '.');
+    partes.push(respostas.valor === 'ok com o valor, usando reembolso do plano'
+      ? 'Estou ciente do valor de R$ 270 e vou pedir reembolso ao meu plano.'
+      : 'Estou ciente do valor de R$ 270.');
+    partes.push('Consigo fazer sessões semanais e gostaria de começar ' + respostas.quando + '.');
+    return partes.join(' ');
+  }
+
+  function atualizarLink() {
+    var pronto = nome.value.trim().length >= 2;
+    whats.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensagem());
+    whats.setAttribute('aria-disabled', pronto ? 'false' : 'true');
+  }
+
+  nome.addEventListener('input', atualizarLink);
+  nome.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && whats.getAttribute('aria-disabled') === 'false') whats.click();
+  });
+
+  whats.addEventListener('click', function (e) {
+    if (whats.getAttribute('aria-disabled') === 'true') { e.preventDefault(); nome.focus(); return; }
+    atualizarLink();
+    if (!leadEnviado) {
+      leadEnviado = true;
+      pixel('track', 'Lead');      // evento de otimização da campanha: só quem passou no filtro
+      pixel('track', 'Contact');   // mantém o Contact coerente com o resto do site
+    }
+  });
+
+  mostrar(0);
+})();
+</script>
+</body>
+</html>

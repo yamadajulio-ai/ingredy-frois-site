@@ -71,7 +71,7 @@
       <p class="cookie-banner__text">
         Usamos cookies e o Pixel da Meta para medir o acesso ao site e o resultado dos anúncios.
         Eles só são ativados com a sua permissão. Saiba mais na
-        <a href="privacidade.html">Política de Privacidade</a>.
+        <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
       </p>
       <div class="cookie-banner__actions">
         <button type="button" class="btn btn--outline cookie-banner__btn" data-consent="${REJECTED}">Recusar</button>

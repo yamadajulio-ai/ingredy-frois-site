@@ -101,12 +101,15 @@
       <section class="pa__step" data-step="2" data-q="valor">
         <h2>Como funciona o atendimento</h2>
         <div class="pa__info">
-          Sessões <strong>on-line</strong>, de <strong>50 minutos a 1 hora</strong>, no valor de <strong>R$ 270</strong>.<br>
+          Sessões <strong>on-line</strong>, de <strong>50 minutos a 1 hora</strong>.<br>
+          <strong>Sessão avulsa:</strong> R$&nbsp;270<br>
+          <strong>Pacote mensal (4 sessões):</strong> R$&nbsp;1.000 (R$&nbsp;250 por sessão)<br>
           O atendimento é <strong>particular</strong>, e eu emito recibo para você pedir <strong>reembolso ao seu plano de saúde</strong>.
         </div>
         <p>Isso funciona para você neste momento?</p>
         <div class="pa__options">
           <button type="button" class="pa__opt" data-value="ok com o valor" data-ok>Sim, funciona para mim</button>
+          <button type="button" class="pa__opt" data-value="ok com o valor, interesse no pacote mensal" data-ok>Sim, tenho interesse no pacote mensal</button>
           <button type="button" class="pa__opt" data-value="ok com o valor, usando reembolso do plano" data-ok>Sim, pedindo reembolso ao meu plano</button>
           <button type="button" class="pa__opt" data-value="nao" data-stop="valor">No momento não cabe no meu orçamento</button>
         </div>
@@ -183,6 +186,13 @@
   var iniciou = false;
   var leadEnviado = false;
 
+  // Frase da mensagem do WhatsApp para cada resposta da pergunta 2 (valor e formato)
+  var MSG_VALOR = {
+    'ok com o valor': 'Estou ciente dos valores do atendimento.',
+    'ok com o valor, interesse no pacote mensal': 'Tenho interesse no pacote mensal de 4 sessões (R$ 1.000).',
+    'ok com o valor, usando reembolso do plano': 'Estou ciente dos valores e vou pedir reembolso ao meu plano.'
+  };
+
   var STOP_MSG = {
     valor: 'Entendo que este não é o momento. Se a sua situação mudar, este pré-agendamento continua aqui, e eu vou adorar conversar com você.',
     frequencia: 'Como o acompanhamento é semanal, talvez agora não seja o melhor momento. Quando a sua rotina permitir, este pré-agendamento continua aqui.',
@@ -245,9 +255,7 @@
     var n = nome.value.trim();
     var partes = ['Olá, Ingredy! ' + (n ? 'Sou ' + n + '. ' : '') + 'Fiz o pré-agendamento no site.'];
     partes.push('Acompanhamento: ' + respostas.paraQuem + '.');
-    partes.push(respostas.valor === 'ok com o valor, usando reembolso do plano'
-      ? 'Estou ciente do valor de R$ 270 e vou pedir reembolso ao meu plano.'
-      : 'Estou ciente do valor de R$ 270.');
+    partes.push(MSG_VALOR[respostas.valor] || MSG_VALOR['ok com o valor']);
     partes.push('Consigo fazer sessões semanais e gostaria de começar ' + respostas.quando + '.');
     return partes.join(' ');
   }
